@@ -29,31 +29,37 @@ The Write functionality will allow the user to create and delete writing Project
 Initial thoughts on database table organization:
 
 **Users** `has_many :books, :projects`
+
 | username | password_digest | first_name | last_name | session_token |
 | --- | --- | --- | --- | --- |
 | string | string | string | string | string |
 
 **Books** `belongs_to :user`
+
 | title | author | year | genre | description | image_url | user_id | user_comment |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | string | string | number | string | text | string | integer | string |
 
 **Projects** `belongs_to :user` `has_many :chapters, :characters, :locations`
+
 | title | subtitle |
 | --- | --- |
 | string | string |
 
 **Chapters** `belongs_to :project`
+
 | number | title | content |
 | --- | --- | --- |
 | string | string | text |
 
 **Characters** `belongs_to :project`
+
 | name | description |
 | --- | --- |
 | string | text |
 
 **Locations** `belongs_to :project`
+
 | name | description |
 | --- | --- |
 | string | text |
