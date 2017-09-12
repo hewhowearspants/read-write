@@ -1,8 +1,8 @@
 #### Ryan Edwards 9/11/17
 
-## READ/WRITE
+# READ/WRITE
 
-### What is Read/Write?
+## What is Read/Write?
 
 Following up on the smashing success that was The Reading List, the developers (developer) have (has) opted to expand on the premise of enabling those with a passion for the written word. As with The Reading List, users will be able to maintain a list of books they would like to read (obtained either through an API search or created themselves), as well as a lit of books they have read and what they thought about them. In addition to that, the user will now be able to express themselves further by writing their own stories.
 
@@ -12,11 +12,11 @@ Users will be able to create any number of projects, within which they can write
 
 Following that, it might even be possible to head into a forum to discuss project ideas and bounce ideas back and forth.
 
-### Wireframes
+## Wireframes
 
 (pending)
 
-### Initial thoughts on app structure
+## Initial thoughts on app structure
 
 The app will largely be divided as the name indicates, between Read and Write functions. It will largely require a user to be logged into use the bulk of its features. A few features, like the book search, will be accessible without loggin in, as with The Reading List (Project 2). I have not decided yet whether the store lookup will make a return, as I question the usefulness of it with regard to the core purpose of the app, but perhaps it can be reimplemented post-MVP.
 
@@ -24,7 +24,7 @@ The Read functionality will be a fairly simple database of user books. User will
 
 The Write functionality will allow the user to create and delete writing Projects. These Projects will have three components: Chapters, Characters, and Locations. The Chapters and Locations will have name and description. The Chapters will have a number, a name, and CONTENT. The Content will be where the user writes their stories. I have not yet decided if content will be saved in Firebase, saving as the user types (a good idea), or if I will implement a Save button to update the chapter or have it update automatically or both.
 
-#### Tables
+### Tables
 
 Initial thoughts on database table organization:
 
@@ -64,7 +64,7 @@ Initial thoughts on database table organization:
 | --- | --- |
 | string | text |
 
-### Phases
+## Phases
 
 #### Phase -5
 1. Wireframes
@@ -109,7 +109,7 @@ These are just possible avenues to take from this point
 3. Another chatroom!!!
 3. ...?
 
-### Tech Stack
+## Tech Stack
 * React.js
 * Rails
 * Ruby
@@ -118,7 +118,7 @@ These are just possible avenues to take from this point
 * possibly ActiveCable for chatroom functionality
 * possibly Redux (need to attend that lecture)
 
-### Links and Resources
+## Links and Resources
 [Google Books API](https://developers.google.com/books/)
 [Google Locations API](https://developers.google.com/maps/)
 
