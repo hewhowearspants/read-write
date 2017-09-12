@@ -14,7 +14,14 @@ Following that, it might even be possible to head into a forum to discuss projec
 
 ## Wireframes
 
-(pending)
+[Wireframe 1]('assets/Wireframe-1.jpg)
+[Wireframe 2]('assets/Wireframe-2.jpg)
+[Wireframe 3]('assets/Wireframe-3.jpg)
+[Wireframe 4]('assets/Wireframe-4.jpg)
+[Wireframe 5]('assets/Wireframe-5.jpg)
+[Wireframe 6]('assets/Wireframe-6.jpg)
+[Wireframe 7]('assets/Wireframe-7.jpg)
+[Wireframe 8]('assets/Wireframe-8.jpg)
 
 ## Initial thoughts on app structure
 
