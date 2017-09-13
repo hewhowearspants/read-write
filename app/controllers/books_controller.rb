@@ -1,5 +1,6 @@
 class BooksController < ApiController
   before_action :require_login
+  before_action :set_book, except: [:index, :create]
 
   def index
     books = current_user.books.all
@@ -7,9 +8,8 @@ class BooksController < ApiController
   end
 
   def show
-    book = current_user.books.find(params[:id])
-    book_user = book.user
-    render json: { book: book, username: book_user.username }
+    book_user = @book.user
+    render json: { book: @book, username: book_user.username }
   end
 
   def create
@@ -26,10 +26,35 @@ class BooksController < ApiController
     end
   end
 
+  def update
+    if @book.update(update_params)
+      render json: {
+        message: 'ok',
+        book: @book
+      }
+    else
+      render json: {message: 'Update book failed'}
+    end
+  end
+
+  def destroy
+    if @book.destroy!
+      render json: { message: 'Book baleeted' }
+    end
+  end
+
   private
 
   def book_params
     params.require(:book).permit(:title, :author, :year, :genre, :image_url, :description)
   end
-  
+
+  def update_params
+    params.require(:book).permit(:title, :author, :year, :genre, :image_url, :description)
+  end
+
+  def set_book
+    @book = current_user.books.find(params[:id])
+  end
+
 end
