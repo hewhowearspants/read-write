@@ -12,14 +12,16 @@ class UsersController < ApiController
 
   def profile
     user = User.find_by_auth_token!(request.headers[:token])
-    # insert user books and projects here
+    user_books = Book.where(user_id: user.id)
+    user_projects = Project.where(user_id: user.id)
     render json: {
       user: {
         username: user.username, 
         email: user.email,
         name: user.name
       },
-      #books, projects
+      books: user_books,
+      projects: user_projects,
     }
   end
 
