@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :books
   resources :projects do
     resources :chapters
-    #resources :characters
-    #resources :locations
+    resources :characters
+    resources :locations
   end
 end
