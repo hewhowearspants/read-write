@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :books
-  resources :projects
-  resources :chapters
+  resources :projects do
+    resources :chapters
+    #resources :characters
+    #resources :locations
+  end
 end
