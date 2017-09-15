@@ -30,8 +30,10 @@ class BookList extends Component {
 
     this.toggleBooksRead = this.toggleBooksRead.bind(this);
     this.setBookToShow = this.setBookToShow.bind(this);
+    this.setBookToEdit = this.setBookToEdit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
+    this.handleBookEditSubmit = this.handleBookEditSubmit.bind(this);
     this.toggleCreateBook = this.toggleCreateBook.bind(this);
   }
 
@@ -74,14 +76,33 @@ class BookList extends Component {
     }
   }
 
-  setBookToShow(id) {
-    if (id !== this.state.bookToShow) {
+  setBookToEdit(id) {
+    if (id) {
+      const bookToEdit = this.state.bookData.filter((book) => {
+        if (book.id === id) {
+          return book;
+        }
+      })[0];
       this.setState({
-        bookToShow: id
+        bookToEdit: id,
+        bookTitle: bookToEdit.title,
+        bookAuthor: bookToEdit.author,
+        bookDescription: bookToEdit.description,
+        bookGenre: bookToEdit.genre,
+        bookYear: bookToEdit.year,
+        bookImage: bookToEdit.image_url,
+        creatingBook: false,
       })
     } else {
       this.setState({
-        bookToShow: null
+        bookToEdit: null,
+        bookTitle: '',
+        bookAuthor: '',
+        bookDescription: '',
+        bookGenre: '',
+        bookYear: '',
+        bookImage: '',
+        creatingBook: false,
       })
     }
   }
@@ -154,6 +175,93 @@ class BookList extends Component {
     }).catch((err) => {
       console.log(err);
     });
+  }
+
+  // sends book edit request to server
+  handleBookEditSubmit() {
+    //event.preventDefault();
+    axios(`/books/${this.state.bookToEdit}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+      data: {
+        book: {
+          title: this.state.bookTitle,
+          author: this.state.bookAuthor,
+          description: this.state.bookDescription,
+          genre: this.state.bookGenre,
+          year: this.state.bookYear,
+          image_url: this.state.bookImage,
+        }
+      }
+    }).then((res) => {
+      console.log(res);
+      // replace book in state with updated book
+      const newBookData = [...this.state.bookData];
+      newBookData.forEach((book, index, array) => {
+        if (book.id === res.data.book.id) {
+          array[index] = res.data.book;
+        }
+      });
+      this.setState({
+        bookData: newBookData,
+        bookTitle: '',
+        bookAuthor: '',
+        bookDescription: '',
+        bookGenre: '',
+        bookYear: '',
+        bookImage: '',
+        bookToEdit: null,
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  showBooks() {
+    const booksToShow = this.state.bookData.filter((book) => {
+      if (book.read === this.state.booksRead) {
+        return book;
+      }
+    });
+
+    if (this.state.booksRead && booksToShow.length === 0) {
+      return <p>You haven't read any books!</p>
+    } else if (!this.state.booksRead && booksToShow.length === 0) {
+      return <p>You have no books to read!</p>
+    } else {
+      return booksToShow.map((book) => {
+        return (
+          <div className='book-single-container' key={book.id}>
+            <BookSingle 
+              type="list" 
+              book={book} 
+              setBookToShow={this.setBookToShow} 
+              bookToShow={this.state.bookToShow} 
+              bookToEdit={this.state.bookToEdit}
+              bookTitle={this.state.bookTitle}
+              bookAuthor={this.state.bookAuthor}
+              handleInputChange={this.handleInputChange} 
+            />
+            {this.state.bookToShow === book.id ? 
+              <Book 
+                book={book} 
+                setBookToEdit={this.setBookToEdit}
+                bookToEdit={this.state.bookToEdit}
+                bookDescription={this.state.bookDescription}
+                bookGenre={this.state.bookGenre}
+                bookYear={this.state.bookYear}
+                bookImage={this.state.bookImage}
+                handleInputChange={this.handleInputChange}
+                handleBookEditSubmit={this.handleBookEditSubmit}
+              /> 
+            : ''}
+          </div>
+        )
+      })
+    }
   }
 
   render() {
