@@ -17,6 +17,7 @@ class BookList extends Component {
       bookDataLoaded: false,
       booksRead: false,
       bookToShow: null,
+      bookToEdit: null,
       creatingBook: false,
       //form fields
       bookTitle: '',
