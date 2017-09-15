@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Auth from '../modules/Auth';
 import BookSingle from './BookSingle';
 import Book from './Book';
+import NewBookForm from './NewBookForm';
 
 
 class BookList extends Component {
@@ -165,10 +166,24 @@ class BookList extends Component {
           </p>
         </div>
         {(this.state.bookDataLoaded ? this.showBooks() : <p>Loading...</p>)}
-        <div className='book-create-button'>
+        {!this.state.creatingBook ? (
+          <div className='book-create-button' onClick={this.toggleCreateBook}>
           <p>Add A Book</p>
           <p>+</p>
         </div>
+        ) : (
+          <NewBookForm 
+            handleInputChange={this.handleInputChange} 
+            handleBookSubmit={this.handleBookSubmit}
+            toggleCreateBook={this.toggleCreateBook} 
+            bookTitle={this.state.bookTitle}
+            bookAuthor={this.state.bookAuthor}
+            bookDescription={this.state.bookDescription}
+            bookGenre={this.state.bookGenre}
+            bookYear={this.state.bookYear}
+            bookImage={this.state.bookImage}
+          />
+        )}
       </div>
     )
   }
