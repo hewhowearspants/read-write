@@ -5,7 +5,7 @@ import Auth from '../modules/Auth';
 import BookSingle from './BookSingle';
 import Book from './Book';
 import NewBookForm from './NewBookForm';
-
+import FeedbackModal from './FeedbackModal';
 
 class BookList extends Component {
   constructor() {
@@ -285,6 +285,13 @@ class BookList extends Component {
             bookImage={this.state.bookImage}
           />
         )}
+        <FeedbackModal 
+          show={this.state.bookToRate} 
+          onClose={() => this.setBookToRate(null)}
+          bookToRate={this.state.bookToRate}
+          handleInputChange={this.handleInputChange}
+          handleFeedbackSubmit={this.handleFeedbackSubmit}
+        />
       </div>
     )
   }
