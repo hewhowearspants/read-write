@@ -72,7 +72,7 @@ class App extends Component {
     }).catch((err) => {
       console.log(err);
     });
-  }
+  }     
 
   // sends new registration request to server
   handleRegisterSubmit(event) {
