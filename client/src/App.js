@@ -167,7 +167,7 @@ class App extends Component {
               this.state.auth ? <Dash auth={this.state.auth} resetFireRedirect={this.resetFireRedirect} /> : <Redirect to="/login" />}
           />
           <Route
-            exact path="/books"
+            path="/books"
             render={() =>
               this.state.auth ? <BookList /> : <Redirect to="/login" />}
           />
