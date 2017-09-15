@@ -16,10 +16,21 @@ class BookList extends Component {
       bookDataLoaded: false,
       booksRead: false,
       bookToShow: null,
+      creatingBook: false,
+      //form fields
+      bookTitle: '',
+      bookAuthor: '',
+      bookDescription: '',
+      bookGenre: '',
+      bookYear: '',
+      bookImage: '',
     }
 
     this.toggleBooksRead = this.toggleBooksRead.bind(this);
     this.setBookToShow = this.setBookToShow.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleBookSubmit = this.handleBookSubmit.bind(this);
+    this.toggleCreateBook = this.toggleCreateBook.bind(this);
   }
 
   componentDidMount() {
@@ -80,6 +91,67 @@ class BookList extends Component {
         bookToShow: null
       }
     })
+  }
+
+  toggleCreateBook() {
+    this.setState((prevState) => {
+      return {
+        bookTitle: '',
+        bookAuthor: '',
+        bookDescription: '',
+        bookGenre: '',
+        bookYear: '',
+        bookImage: '',
+        creatingBook: !prevState.creatingBook
+      }
+    })
+  }
+
+  // generic input change for form fields
+  handleInputChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  // sends login request to server
+  handleBookSubmit(event) {
+    event.preventDefault();
+    axios('/books', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+      data: {
+        book: {
+          title: this.state.bookTitle,
+          author: this.state.bookAuthor,
+          description: this.state.bookDescription,
+          genre: this.state.bookGenre,
+          year: this.state.bookYear,
+          image_url: this.state.bookImage,
+        }
+      }
+    }).then((res) => {
+      console.log(res);
+      this.setState((prevState) => {
+        return {
+          bookData: prevState.bookData.concat(res.data.book),
+          bookTitle: '',
+          bookAuthor: '',
+          bookDescription: '',
+          bookGenre: '',
+          bookYear: '',
+          bookImage: '',
+          creatingBook: false,
+        }
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   render() {
