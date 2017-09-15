@@ -306,7 +306,9 @@ class BookList extends Component {
               bookToEdit={this.state.bookToEdit}
               bookTitle={this.state.bookTitle}
               bookAuthor={this.state.bookAuthor}
-              handleInputChange={this.handleInputChange} 
+              handleInputChange={this.handleInputChange}
+              setBookToRate={this.setBookToRate}
+              handleFeedbackSubmit={this.handleFeedbackSubmit}
             />
             {this.state.bookToShow === book.id ? 
               <Book 

@@ -27,6 +27,9 @@ const BookSingle = (props) => {
         </div>
       )}
       <div className="book-single-bottom">
+        <div className="book-mark-read">
+          {props.book.read ? <p onClick={() => props.handleFeedbackSubmit(props.book.id)}>Mark Unread</p> : <p onClick={() => props.setBookToRate(props.book.id)}>Mark Read</p>}
+        </div>
         <div className="book-show-info" onClick={() => props.setBookToShow(props.book.id)}>
           {props.bookToShow === props.book.id ? <p>-</p> : <p>+</p>}
         </div>
