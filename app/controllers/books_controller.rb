@@ -51,7 +51,7 @@ class BooksController < ApiController
   end
 
   def update_params
-    params.require(:book).permit(:title, :author, :year, :genre, :image_url, :description)
+    params.require(:book).permit(:title, :author, :year, :genre, :image_url, :description, :read, :user_rating, :user_comment)
   end
 
   def set_book
