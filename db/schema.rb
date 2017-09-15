@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914141915) do
+ActiveRecord::Schema.define(version: 20170915015443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20170914141915) do
     t.string "user_comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "read"
+    t.integer "user_rating"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
