@@ -16,6 +16,7 @@ import NavPane from './components/NavPane';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import BookList from './components/BookList';
+import ProjectList from './components/ProjectList';
 import Dash from './components/Dash';
 
 
@@ -169,6 +170,11 @@ class App extends Component {
             exact path="/books"
             render={() =>
               this.state.auth ? <BookList /> : <Redirect to="/login" />}
+          />
+          <Route
+            exact path="/projects"
+            render={() =>
+              this.state.auth ? <ProjectList /> : <Redirect to="/login" />}
           />
         </div>
       </Router>
