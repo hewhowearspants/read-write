@@ -233,6 +233,56 @@ class BookList extends Component {
     });
   }
 
+  handleFeedbackSubmit(id) {
+    var bookToRate = this.state.bookData.filter((book, index) => {
+      if(book.id === id) {
+        return book;
+      }
+    })[0];
+
+    if (bookToRate.read === false) {
+      bookToRate.read = true;
+      bookToRate.user_rating = this.state.bookRating;
+      bookToRate.user_comment = this.state.bookComment;
+    } else {
+      bookToRate.read = false;
+      bookToRate.user_rating = null;
+      bookToRate.user_comment = null;
+    };
+
+    axios(`/books/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+      data: {
+        book: {
+          read: bookToRate.read,
+          user_rating: bookToRate.user_rating,
+          user_comment: bookToRate.user_comment,
+        }
+      }
+    }).then((res) => {
+      console.log(res);
+      // replace book in state with updated book
+      const newBookData = [...this.state.bookData];
+      newBookData.forEach((book, index, array) => {
+        if (book.id === res.data.book.id) {
+          array[index] = res.data.book;
+        }
+      });
+      this.setState({
+        bookData: newBookData,
+        bookRating: '',
+        bookComment: '',
+        bookToRate: null,
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   showBooks() {
     const booksToShow = this.state.bookData.filter((book) => {
       if (book.read === this.state.booksRead) {
