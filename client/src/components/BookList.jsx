@@ -102,6 +102,22 @@ class BookList extends Component {
     }
   }
 
+  setBookToRate(id) {
+    if (id) {
+      this.setState({
+        bookToRate: id,
+        bookRating: '',
+        bookComment: '',
+      })
+    } else {
+      this.setState({
+        bookToRate: null,
+        bookRating: '',
+        bookComment: '',
+      })
+    }
+  }
+
   toggleBooksRead() {
     this.setState((prevState) => {
       return {
