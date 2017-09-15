@@ -34,10 +34,46 @@ class BookList extends Component {
   }
 
   showBooks() {
-    return this.state.bookData.map((book) => {
-      return (
-        <BookSingle type="list" book={book} key={book.id} />
-      )
+    const booksToShow = this.state.bookData.filter((book) => {
+      if (book.read === this.state.booksRead) {
+        return book;
+      }
+    });
+
+    if (this.state.booksRead && booksToShow.length === 0) {
+      return <p>You haven't read any books!</p>
+    } else if (!this.state.booksRead && booksToShow.length === 0) {
+      return <p>You have no books to read!</p>
+    } else {
+      return booksToShow.map((book) => {
+        return (
+          <div className='book-single-container' key={book.id}>
+            <BookSingle type="list" book={book} setBookToShow={this.setBookToShow} bookToShow={this.state.bookToShow} />
+            {this.state.bookToShow === book.id ? <Book book={book} /> : ''}
+          </div>
+        )
+      })
+    }
+  }
+
+  setBookToShow(id) {
+    if (id !== this.state.bookToShow) {
+      this.setState({
+        bookToShow: id
+      })
+    } else {
+      this.setState({
+        bookToShow: null
+      })
+    }
+  }
+
+  toggleBooksRead() {
+    this.setState((prevState) => {
+      return {
+        booksRead: !prevState.booksRead,
+        bookToShow: null
+      }
     })
   }
 
