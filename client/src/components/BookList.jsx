@@ -17,6 +17,7 @@ class BookList extends Component {
       booksRead: false,
       bookToShow: null,
       bookToEdit: null,
+      bookToRate: null,
       creatingBook: false,
       //form fields
       bookTitle: '',
@@ -25,15 +26,19 @@ class BookList extends Component {
       bookGenre: '',
       bookYear: '',
       bookImage: '',
+      bookRating: '',
+      bookComment: '',
     }
 
     this.toggleBooksRead = this.toggleBooksRead.bind(this);
+    this.toggleCreateBook = this.toggleCreateBook.bind(this);
+    this.setBookToRate = this.setBookToRate.bind(this);
     this.setBookToShow = this.setBookToShow.bind(this);
     this.setBookToEdit = this.setBookToEdit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
     this.handleBookEditSubmit = this.handleBookEditSubmit.bind(this);
-    this.toggleCreateBook = this.toggleCreateBook.bind(this);
+    this.handleFeedbackSubmit = this.handleFeedbackSubmit.bind(this);
   }
 
   componentDidMount() {
