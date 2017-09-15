@@ -15,6 +15,7 @@ class BooksController < ApiController
   def create
     book = Book.new(book_params)
     book.user = current_user
+    book.read = false
 
     if book.save
       render json: {
