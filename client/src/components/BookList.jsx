@@ -14,7 +14,12 @@ class BookList extends Component {
     this.state = {
       bookData: null,
       bookDataLoaded: false,
+      booksRead: false,
+      bookToShow: null,
     }
+
+    this.toggleBooksRead = this.toggleBooksRead.bind(this);
+    this.setBookToShow = this.setBookToShow.bind(this);
   }
 
   componentDidMount() {
@@ -80,7 +85,18 @@ class BookList extends Component {
   render() {
     return (
       <div className='booklist'>
+        <div className='book-read-toggle'>
+          <p>
+            <span style={!this.state.booksRead ? {color:"red"} : {color:""}}>Unread </span> 
+            <span onClick={this.toggleBooksRead}>-X-</span>
+            <span style={this.state.booksRead ? {color:"red"} : {color:""}}> Read</span>
+          </p>
+        </div>
         {(this.state.bookDataLoaded ? this.showBooks() : <p>Loading...</p>)}
+        <div className='book-create-button'>
+          <p>Add A Book</p>
+          <p>+</p>
+        </div>
       </div>
     )
   }

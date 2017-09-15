@@ -8,6 +8,9 @@ const BookSingle = (props) => {
         <p>{props.book.author}</p>
       </div>
       <div className="book-single-bottom">
+        <div className="book-show-info" onClick={() => props.setBookToShow(props.book.id)}>
+          {props.bookToShow === props.book.id ? <p>-</p> : <p>+</p>}
+        </div>
       </div>
     </div>
   )
