@@ -131,7 +131,7 @@ class BookList extends Component {
     });
   }
 
-  // sends login request to server
+  // sends book create request to server
   handleBookSubmit(event) {
     event.preventDefault();
     axios('/books', {
