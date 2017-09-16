@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Book = (props) => {
+const BookSingleInfo = (props) => {
   return (
-    <div className="book">
+    <div className="book-single-info">
       {props.bookToEdit !== props.book.id ? (
         <div className="book-description">
           <p>{props.book.description}</p>
@@ -65,4 +65,4 @@ const Book = (props) => {
   )
 }
 
-export default Book;
+export default BookSingleInfo;
