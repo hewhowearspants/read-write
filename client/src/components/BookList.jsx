@@ -39,6 +39,7 @@ class BookList extends Component {
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
     this.handleBookEditSubmit = this.handleBookEditSubmit.bind(this);
     this.handleFeedbackSubmit = this.handleFeedbackSubmit.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
   }
 
   componentDidMount() {
@@ -284,6 +285,29 @@ class BookList extends Component {
     });
   }
 
+  deleteBook(id) {
+    axios(`/books/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      }
+    }).then((res) => {
+      console.log(res);
+      const newBookData = [...this.state.bookData];
+      newBookData.forEach((book, index, array) => {
+        if (book.id === id) {
+          array.splice(index, 1);
+        }
+      });
+      this.setState({
+        bookData: newBookData
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   showBooks() {
     const booksToShow = this.state.bookData.filter((book) => {
       if (book.read === this.state.booksRead) {
@@ -322,6 +346,7 @@ class BookList extends Component {
                 bookImage={this.state.bookImage}
                 handleInputChange={this.handleInputChange}
                 handleBookEditSubmit={this.handleBookEditSubmit}
+                deleteBook={this.deleteBook}
               /> 
             : ''}
           </div>
