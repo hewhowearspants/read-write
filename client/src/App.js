@@ -44,7 +44,9 @@ class App extends Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
-    this.resetFireRedirect = this.resetFireRedirect.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
+    this.resetRedirect = this.resetRedirect.bind(this);
+    this.searchBooks = this.searchBooks.bind(this);
   }
 
   // generic input change for form fields
@@ -116,11 +118,58 @@ class App extends Component {
     });
   }
 
-  // resets redirect flag
-  resetFireRedirect() {
-    if (this.state.shouldFireRedirect) {
+  searchBooks(event) {
+    event.preventDefault();
+    axios('/books/search', {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+      data: {
+        book: {
+          query: this.state.bookQuery
+        }
+      }
+    }).then((res) => {
+      console.log(res);
+      const results = res.data.data.items;
+      const bookSearchData = [];
+      let searchId = 1;
+      for (let book of results) {
+        bookSearchData.push({
+          search_id: searchId,
+          title: book.volumeInfo.title ? book.volumeInfo.title : null,
+          author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : null,
+          year: book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate.slice(0,4) : null,
+          genre: book.volumeInfo.categories ? book.volumeInfo.categories.join(', ') : null,
+          short_description: book.searchInfo ? book.searchInfo.textSnippet : null,
+          description: book.volumeInfo.description ? book.volumeInfo.description : null,
+          image_url: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : null, 
+        })
+        searchId++;
+      }
       this.setState({
-        shouldFireRedirect: false,
+        bookSearchData: bookSearchData,
+        bookQuery: '',
+        redirect: '/books/search',
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  setRedirect(path) {
+    this.setState({
+      redirect: path,
+    });
+  }
+
+  // resets redirect flag
+  resetRedirect() {
+    if (this.state.redirect) {
+      this.setState({
+        redirect: null,
       });
     };
   }
