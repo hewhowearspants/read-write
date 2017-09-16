@@ -51,20 +51,15 @@ const Book = (props) => {
       <div className="book-bottom">
         {props.bookToEdit !== props.book.id ? (
           <div className="links">
-            <p>
-              <span onClick={() => props.setBookToEdit(props.book.id)}>Edit</span>
-            </p>
+            <span onClick={() => props.setBookToEdit(props.book.id)}>Edit</span>
+            <span onClick={() => props.deleteBook(props.book.id)}>Delete</span>
           </div>
         ) : (
           <div className="links">
-            {/* <form onSubmit={() => props.handleBookEditSubmit()}>
-              <input type="submit" value="Submit" />
-            </form> */}
             <span onClick={() => props.handleBookEditSubmit()}>Submit</span>
             <span onClick={() => props.setBookToEdit(null)}>Cancel</span>
           </div>
-      )}
-          
+        )}
       </div>
     </div>
   )
