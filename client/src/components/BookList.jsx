@@ -62,7 +62,8 @@ class BookList extends Component {
 
   // sets which book is showing more info
   setBookToShow(id) {
-    if (id !== this.state.bookToShow) {
+    console.log(id);
+    if (id) {
       this.setState({
         bookToShow: id,
         bookToEdit: null
