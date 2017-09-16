@@ -218,9 +218,14 @@ class App extends Component {
               this.state.auth ? <Dash auth={this.state.auth} resetFireRedirect={this.resetFireRedirect} /> : <Redirect to="/login" />}
           />
           <Route
-            path="/books"
+            exact path="/books"
             render={() =>
-              this.state.auth ? <BookList /> : <Redirect to="/login" />}
+              this.state.auth ? <BookList setRedirect={this.setRedirect} /> : <Redirect to="/login" />}
+          />
+          <Route
+            exact path="/books/search"
+            render={() =>
+              this.state.auth ? <BookSearch bookSearchData={this.state.bookSearchData} setRedirect={this.setRedirect} /> : <Redirect to="/login" />}
           />
           <Route
             exact path="/projects"
