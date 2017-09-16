@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Auth from '../modules/Auth';
 import BookSingle from './BookSingle';
-import Book from './Book';
+import BookSingleInfo from './BookSingleInfo';
 import NewBookForm from './NewBookForm';
 import FeedbackModal from './FeedbackModal';
 
@@ -336,7 +336,7 @@ class BookList extends Component {
               handleFeedbackSubmit={this.handleFeedbackSubmit}
             />
             {this.state.bookToShow === book.id ? 
-              <Book 
+              <BookSingleInfo
                 book={book} 
                 setBookToEdit={this.setBookToEdit}
                 bookToEdit={this.state.bookToEdit}
