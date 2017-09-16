@@ -42,6 +42,7 @@ class BookList extends Component {
   }
 
   componentDidMount() {
+    this.props.setRedirect(null);
     axios.get('/books', {
       headers: {
         'Authorization': `Token ${Auth.getToken()}`,
