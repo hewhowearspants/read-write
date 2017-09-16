@@ -3,7 +3,7 @@ import Auth from '../modules/Auth';
 
 const BookSearchSingle = (props) => {
   return (
-    <div className={`book-${props.type}`}>
+    <div className='book-single'>
       <div className="book-single-top">
         <p>{props.book.title}</p>
         <p>{props.book.author}</p>

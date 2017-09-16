@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookSingle = (props) => {
   return (
-    <div className={`book-${props.type}`}>
+    <div className='book-single'>
       {props.bookToEdit !== props.book.id ? (
         <div className="book-single-top">
           <p>{props.book.title}</p>

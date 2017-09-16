@@ -2,7 +2,7 @@ import React from 'react';
 
 const BookSearchSingleInfo = (props) => {
   return (
-    <div className="book">
+    <div className="book-single-info">
       <div className="book-description">
         <p>{props.book.description}</p>
       </div>
