@@ -12,13 +12,13 @@ const BookSearchSingle = (props) => {
         <div className="book-add-to-list">
           {Auth.isUserAuthenticated ? <button onClick={() => props.addBookToList(props.book.search_id)}>Add</button> : ''}
         </div>
-        <div className="book-show-info">
-          {props.bookToShow === props.book.search_id ? (
-            <button onClick={() => props.setBookToShow(null)}>-</button>
-          ) : (
-            <button onClick={() => props.setBookToShow(props.book.search_id)}>+</button>
-          )}
-        </div>
+      <div className="book-show-info">
+        {props.bookToShow === props.book.search_id ? (
+          <button onClick={() => props.setBookToShow(null)}>-</button>
+        ) : (
+          <button onClick={() => props.setBookToShow(props.book.search_id)}>+</button>
+        )}
+      </div>
       </div>
     </div>
   )
