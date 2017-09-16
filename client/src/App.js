@@ -18,8 +18,7 @@ import BookList from './components/BookList';
 import BookSearch from './components/BookSearch';
 import ProjectList from './components/ProjectList';
 import Dash from './components/Dash';
-
-
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -232,6 +231,12 @@ class App extends Component {
             render={() =>
               this.state.auth ? <ProjectList /> : <Redirect to="/login" />}
           />
+          <Footer 
+            bookQuery={this.state.bookQuery} 
+            handleInputChange={this.handleInputChange} 
+            searchBooks={this.searchBooks} 
+          />
+          {this.state.redirect ? <Redirect to={this.state.redirect} /> : ''}
         </div>
       </Router>
     );
