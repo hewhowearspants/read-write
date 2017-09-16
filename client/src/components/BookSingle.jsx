@@ -30,8 +30,12 @@ const BookSingle = (props) => {
         <div className="book-mark-read">
           {props.book.read ? <p onClick={() => props.handleFeedbackSubmit(props.book.id)}>Mark Unread</p> : <p onClick={() => props.setBookToRate(props.book.id)}>Mark Read</p>}
         </div>
-        <div className="book-show-info" onClick={() => props.setBookToShow(props.book.id)}>
-          {props.bookToShow === props.book.id ? <p>-</p> : <p>+</p>}
+        <div className="book-show-info">
+          {props.bookToShow === props.book.id ? (
+            <button onClick={() => props.setBookToShow(null)}>-</button>
+          ) : (
+            <button onClick={() => props.setBookToShow(props.book.id)}>+</button>
+          )}
         </div>
       </div>
     </div>
