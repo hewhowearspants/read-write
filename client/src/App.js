@@ -15,6 +15,7 @@ import NavPane from './components/NavPane';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import BookList from './components/BookList';
+import BookSearch from './components/BookSearch';
 import ProjectList from './components/ProjectList';
 import Dash from './components/Dash';
 
