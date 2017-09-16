@@ -42,6 +42,7 @@ class BookList extends Component {
     this.deleteBook = this.deleteBook.bind(this);
   }
 
+  // on load, resets App.js redirect state, gets user books
   componentDidMount() {
     this.props.setRedirect(null);
     axios.get('/books', {
@@ -59,6 +60,7 @@ class BookList extends Component {
     });
   }
 
+  // sets which book is showing more info
   setBookToShow(id) {
     if (id !== this.state.bookToShow) {
       this.setState({
@@ -73,6 +75,7 @@ class BookList extends Component {
     }
   }
 
+  // set which book is to be edited, fills in book info for form field states
   setBookToEdit(id) {
     if (id) {
       const bookToEdit = this.state.bookData.filter((book) => {
@@ -104,6 +107,7 @@ class BookList extends Component {
     }
   }
 
+  // set which book is to be rated when marking as read
   setBookToRate(id) {
     if (id) {
       this.setState({
@@ -120,6 +124,7 @@ class BookList extends Component {
     }
   }
 
+  // toggles between read and unread books
   toggleBooksRead() {
     this.setState((prevState) => {
       return {
@@ -130,6 +135,7 @@ class BookList extends Component {
     })
   }
 
+  // toggles the book create form
   toggleCreateBook() {
     this.setState((prevState) => {
       return {
