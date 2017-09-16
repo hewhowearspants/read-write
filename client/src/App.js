@@ -28,7 +28,8 @@ class App extends Component {
 
     this.state = {
       auth: Auth.isUserAuthenticated(),
-      shouldFireRedirect: false,
+      redirect: null,
+      bookSearchData: null,
       //form fields
       registerUsername: '',
       registerPassword: '',
