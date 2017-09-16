@@ -37,6 +37,7 @@ class App extends Component {
       registerName: '',
       loginUsername: '',
       loginPassword: '',
+      bookQuery: '',
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
