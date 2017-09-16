@@ -1,6 +1,9 @@
+require 'Httparty'
+
 class BooksController < ApiController
+
   before_action :require_login
-  before_action :set_book, except: [:index, :create]
+  before_action :set_book, except: [:index, :create, :search]
 
   def index
     books = current_user.books.all
@@ -44,6 +47,13 @@ class BooksController < ApiController
     end
   end
 
+  def search
+    @google = Rails.application.secrets.google_api_key
+    puts query["query"]
+    @response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=#{query["query"]}&key=#{@google}")
+    render json: {data: @response}
+  end
+
   private
 
   def book_params
@@ -52,6 +62,10 @@ class BooksController < ApiController
 
   def update_params
     params.require(:book).permit(:title, :author, :year, :genre, :image_url, :description, :read, :user_rating, :user_comment)
+  end
+
+  def query
+    params.require(:book).permit(:query)
   end
 
   def set_book
