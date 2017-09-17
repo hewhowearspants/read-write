@@ -28,6 +28,7 @@ class App extends Component {
     this.state = {
       auth: Auth.isUserAuthenticated(),
       redirect: null,
+      showNavPane: false,
       bookSearchData: null,
       //form fields
       registerUsername: '',
