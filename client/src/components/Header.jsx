@@ -5,7 +5,7 @@ class Header extends Component {
     return (
       <header>
         <h1>Read/Write</h1>
-        <p>NavPane</p>
+        <p onClick={this.props.toggleNavPane}>NavPane</p>
       </header>
     )
   }
