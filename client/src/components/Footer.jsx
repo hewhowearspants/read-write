@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = (props) => {
   return (
     <footer>
-      <form onSubmit={props.searchBooks}>
+      <form className='book-search-form' onSubmit={props.searchBooks}>
         <input
           type="text"
           name="bookQuery"
