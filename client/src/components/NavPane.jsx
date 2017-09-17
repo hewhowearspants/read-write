@@ -6,7 +6,7 @@ import Auth from '../modules/Auth';
 class NavPane extends Component {
   render() {
     return (
-      <nav>
+      <nav className={!this.props.showNavPane ? 'hidden' : ''}>
         <ul>
           {!Auth.isUserAuthenticated() ? (
             <ul>
