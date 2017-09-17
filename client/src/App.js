@@ -188,8 +188,9 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-          <Header />
-          <NavPane logoutUser={this.logoutUser} />
+          <Header toggleNavPane={this.toggleNavPane} />
+          <NavPane showNavPane={this.state.showNavPane} logoutUser={this.logoutUser} />
+          <main>
           <Route
             exact path="/login"
             render={() => 
@@ -242,6 +243,7 @@ class App extends Component {
             render={() =>
               this.state.auth ? <ProjectList /> : <Redirect to="/login" />}
           />
+          </main>
           <Footer 
             bookQuery={this.state.bookQuery} 
             handleInputChange={this.handleInputChange} 
