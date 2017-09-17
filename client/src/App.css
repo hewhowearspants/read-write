@@ -14,8 +14,58 @@
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+header {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background-color: white;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 150px;
+  right: 0;
+  top: 51px;
+  height: calc(100vh - 51px);
+  border-left: 1px solid black;
+  transition: .25s all;
+  background-color: white;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  width: 100%;
+  padding: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hidden {
+  width: 1px;
+  border: none;
+}
+
+main {
+  padding: 51px 5px 45px 5px;
 }
 
 .modal-backdrop {
@@ -37,7 +87,30 @@
   padding: 30px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: white;
+  border-top: 1px solid black;
+  box-sizing: border-box;
+}
+
+footer .book-search-form {
+  width: calc(100% - 10px);
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+footer .book-search-form input[type='text'] {
+  flex-grow: 1;
+}
+
+.book-search-form input[type='submit'] {
+  width: 50px;
 }
