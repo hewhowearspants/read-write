@@ -47,6 +47,16 @@ class App extends Component {
     this.setRedirect = this.setRedirect.bind(this);
     this.resetRedirect = this.resetRedirect.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
+    this.toggleNavPane = this.toggleNavPane.bind(this);
+  }
+
+  // toggle Nav panel
+  toggleNavPane() {
+    this.setState((prevState) => {
+      return {
+        showNavPane: !prevState.showNavPane,
+      }
+    })
   }
 
   // generic input change for form fields
