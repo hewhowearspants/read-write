@@ -106,10 +106,66 @@ class Project extends Component {
       <div className='project-wrapper'>
         {this.state.projectDataLoaded ? (
           <div className='project'>
-            <h3>Projects > {this.state.projectData.title}</h3>
-            <h4>{this.state.projectData.subtitle}</h4>
+            <h3>Projects > {this.state.fieldToEdit !== 'title' ? (
+              <span>
+                {this.state.projectData.title}
+                <span onClick={() => this.setFieldToEdit('title')}> Edit</span>
+              </span>
+             ) : (
+               <span>
+                <input
+                  type='text'
+                  name='title'
+                  value={this.state.title}
+                  placeholder='title'
+                  onChange={this.handleInputChange}
+                />
+                <span onClick={() => this.setFieldToEdit(null)}>No</span>
+                <span onClick={() => this.handleFormFieldSubmit()}>OK</span>
+               </span>
+             )}
+            </h3>
+            {/* SUBTITLE: DISPLAY OR EDIT */}
+            <h4>
+              {this.state.fieldToEdit !== 'subtitle' ? (
+                <span>
+                  {this.state.projectData.subtitle}
+                  <span onClick={() => this.setFieldToEdit('subtitle')}> Edit</span>
+                </span>
+              ) : (
+                <span>
+                  <input
+                    type='text'
+                    name='subtitle'
+                    value={this.state.subtitle}
+                    placeholder='subtitle'
+                    onChange={this.handleInputChange}
+                  />
+                  <span onClick={() => this.setFieldToEdit(null)}>No</span>
+                  <span onClick={() => this.handleFormFieldSubmit()}>OK</span>
+                </span>
+             )}
+            </h4>
             <ProjectNav setPage={this.setPage} currentPage={this.state.currentPage} />
-            {this.state.currentPage === 'synopsis' ? <p>{this.state.projectData.synopsis}</p> : ''}
+            {this.state.currentPage === 'synopsis' ? (
+              this.state.fieldToEdit !== 'synopsis' ? (
+                <p className='synopsis'>{this.state.projectData.synopsis}<span onClick={() => this.setFieldToEdit('synopsis')}> Edit</span></p> 
+              ) : (
+                <span>
+                  <input
+                    type='text'
+                    name='synopsis'
+                    value={this.state.synopsis}
+                    placeholder='synopsis'
+                    onChange={this.handleInputChange}
+                  />
+                  <span onClick={() => this.setFieldToEdit(null)}>No</span>
+                  <span onClick={() => this.handleFormFieldSubmit()}> OK</span>
+                </span>
+              )
+            ) : (
+              ''
+            )}
             {this.state.currentPage === 'chapters' ? <ChapterList projectData={this.state.projectData} /> : ''}
             {this.state.currentPage === 'characters' ? <CharLocList type="character" projectData={this.state.projectData} /> : ''}
             {this.state.currentPage === 'locations' ? <CharLocList type="location" projectData={this.state.projectData} /> : ''}
