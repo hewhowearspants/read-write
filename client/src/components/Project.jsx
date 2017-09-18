@@ -15,9 +15,17 @@ class Project extends Component {
       currentPage: 'synopsis',
       projectData: null,
       projectDataLoaded: false,
+      fieldToEdit: '',
+      //form fields
+      title: '',
+      subtitle: '',
+      synopsis: '',
     }
 
     this.setPage = this.setPage.bind(this);
+    this.setFieldToEdit = this.setFieldToEdit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormFieldSubmit = this.handleFormFieldSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +49,55 @@ class Project extends Component {
   setPage(name) {
     this.setState({
       currentPage: name,
+    })
+  }
+
+  setFieldToEdit(fieldName) {
+    if(fieldName) {
+      this.setState({
+        fieldToEdit: fieldName,
+        [fieldName]: this.state.projectData[fieldName],
+      })
+    } else {
+      this.setState({
+        fieldToEdit: null,
+        [fieldName]: '',
+      })
+    }
+  }
+
+  handleInputChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleFormFieldSubmit() {
+    let dataToUpdate = this.state[this.state.fieldToEdit];
+    axios(`/projects/${this.state.projectData.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+      data: {
+        project: {
+          [this.state.fieldToEdit]: dataToUpdate,
+        }
+      }
+    }).then((res) => {
+      console.log(res);
+      // const newProjectData = [...this.state.projectData];
+      // newProjectData[this.state.fieldToEdit] = res.data.project[this.state.fieldToEdit];
+      this.setState({
+        projectData: res.data.project,
+        [this.state.fieldToEdit]: '',
+        fieldToEdit: null,
+      })
+    }).catch((err) => {
+      console.log(err);
     })
   }
 
