@@ -12,7 +12,10 @@ class ChapterList extends Component {
     this.state = {
       chapterData: null,
       chapterDataLoaded: false,
+      chapterToShow: null,
     }
+    
+    this.setChapterToShow = this.setChapterToShow.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +33,15 @@ class ChapterList extends Component {
     }).catch((err) => {
       console.log(err);
     });
+  }
+
+  setChapterToShow(id) {
+    const chapterData = this.state.chapterData.filter((chapter) => {
+      return chapter.id === id;
+    })[0];
+    this.setState({
+      chapterToShow: chapterData,
+    })
   }
 
   renderChapters() {
