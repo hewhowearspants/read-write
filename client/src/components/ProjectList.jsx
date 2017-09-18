@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Auth from '../modules/Auth';
 import ProjectSingle from './ProjectSingle';
+import NewProjectForm from './NewProjectForm';
 
 class ProjectList extends Component {
   constructor() {
@@ -39,7 +40,23 @@ class ProjectList extends Component {
   render () {
     return (
       <div className="projectlist">
+        <h2>Projects</h2>
         {this.state.projectDataLoaded ? this.renderProjects() : <p>Loading...</p>}
+        {!this.state.creatingProject ? (
+          <div className='project-create-button' onClick={this.toggleCreateProject}>
+            <p>New Project</p>
+            <p>+</p>
+          </div>
+        ) : (
+          <NewProjectForm
+            handleInputChange={this.handleInputChange}
+            handleProjectSubmit={this.handleProjectSubmit}
+            toggleCreateProject={this.toggleCreateProject}
+            projectTitle={this.state.projectTitle}
+            projectSubtitle={this.state.projectSubtitle}
+            projectSynopsis={this.state.projectSynopsis}
+          />
+        )}
       </div>
     )
   }
