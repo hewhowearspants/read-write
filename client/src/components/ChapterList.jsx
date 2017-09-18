@@ -57,13 +57,17 @@ class ChapterList extends Component {
 
   render() {
     return (
-      <div className="chapter-list">
-        {this.state.chapterDataLoaded ? this.renderChapters() : <p>Loading...</p>}
-        <div className='chapter-create-button'>
-          <p>Add Chapter</p>
-          <p>+</p>
+      !this.state.chapterToShow ? (
+        <div className="chapter-list">
+          {this.state.chapterDataLoaded ? this.renderChapters() : <p>Loading...</p>}
+          <div className='chapter-create-button'>
+            <p>Add Chapter</p>
+            <p>+</p>
+          </div>
         </div>
-      </div>
+      ) : (
+        <Chapter projectData={this.props.projectData} setChapterToShow={this.setChapterToShow} chapter={this.state.chapterToShow} />
+      )
     )
   }
 }
