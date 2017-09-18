@@ -59,7 +59,7 @@ nav ul li a {
   color: inherit;
 }
 
-.hidden {
+.closed {
   width: 1px;
   border: none;
 }
