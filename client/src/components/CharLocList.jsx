@@ -187,8 +187,52 @@ class CharLocList extends Component {
     return this.state.data.map((data) => {
       return (
         <div className='char-loc-single' key={data.id}>
-          <p>{data.name}</p>
-          <p>{data.description}</p>
+          <div className='char-loc-single-top'>
+            {this.state.dataToEdit !== data.id ? (
+              <p>{data.name}</p>
+            ) : (
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                placeholder="name"
+                onChange={this.handleInputChange}
+              />
+            )}
+            {this.state.dataToShow !== data.id ? (
+              <button onClick={() => this.setDataToShow(data.id)}>+</button>
+            ) : (
+              <button onClick={() => this.setDataToShow(null)}>-</button>
+            )}
+          </div>
+          {this.state.dataToShow === data.id ? (
+            <div className='char-loc-single-bottom'>
+              {this.state.dataToEdit !== data.id ? (
+                <p>{data.description}</p>
+              ) : (
+                <input
+                  type="text"
+                  name="description"
+                  value={this.state.description}
+                  placeholder="description"
+                  onChange={this.handleInputChange}
+                />
+              )}
+              {this.state.dataToEdit !== data.id ? (
+                <div className='buttons'>
+                  <span onClick={() => this.setDataToEdit(data.id)}>Edit</span>
+                  <span onClick={() => this.deleteCharLoc(data.id)}>Delete</span>
+                </div>
+              ) : (
+                <div className='buttons'>
+                  <span onClick={() => this.setDataToEdit(null)}>Cancel</span>
+                  <span onClick={() => this.handleCharLocEditSubmit()}>Submit</span>
+                </div>
+              )}
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       )
     })
