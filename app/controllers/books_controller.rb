@@ -2,7 +2,7 @@ require 'Httparty'
 
 class BooksController < ApiController
 
-  before_action :require_login
+  before_action :require_login, except: [:search, :query]
   before_action :set_book, except: [:index, :create, :search]
 
   def index

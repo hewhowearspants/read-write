@@ -236,8 +236,7 @@ class App extends Component {
           />
           <Route
             exact path="/books/search"
-            render={() =>
-              this.state.auth ? <BookSearch bookSearchData={this.state.bookSearchData} setRedirect={this.setRedirect} /> : <Redirect to="/login" />}
+            render={() => <BookSearch bookSearchData={this.state.bookSearchData} setRedirect={this.setRedirect} auth={this.state.auth} />}
           />
           <Route
             exact path="/projects"

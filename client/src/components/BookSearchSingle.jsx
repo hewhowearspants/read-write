@@ -10,7 +10,7 @@ const BookSearchSingle = (props) => {
       </div>
       <div className="book-single-bottom">
         <div className="book-add-to-list">
-          {Auth.isUserAuthenticated ? <button onClick={() => props.addBookToList(props.book.search_id)}>Add</button> : ''}
+          {props.auth ? <button onClick={() => props.addBookToList(props.book.search_id)}>Add</button> : <p>Log in to add</p>}
         </div>
       <div className="book-show-info">
         {props.bookToShow === props.book.search_id ? (

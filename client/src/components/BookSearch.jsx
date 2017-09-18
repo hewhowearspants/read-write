@@ -67,7 +67,7 @@ class BookSearch extends Component {
     return this.props.bookSearchData.map((book) => {
       return (
         <div className='book-single-container' key={book.search_id}>
-          <BookSearchSingle type="list" book={book} bookToShow={this.state.bookToShow} setBookToShow={this.setBookToShow} addBookToList={this.addBookToList} />
+          <BookSearchSingle type="list" auth={this.props.auth} book={book} bookToShow={this.state.bookToShow} setBookToShow={this.setBookToShow} addBookToList={this.addBookToList} />
           {this.state.bookToShow === book.search_id ? <BookSearchSingleInfo book={book} /> : ''}
         </div>
       )
