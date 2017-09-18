@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import Auth from '../modules/Auth';
 
+import NewCharLocForm from './NewCharLocForm';
+
 class CharLocList extends Component {
     constructor() {
     super();
@@ -196,10 +198,20 @@ class CharLocList extends Component {
     return (
       <div className="char-loc-list">
         {this.state.dataLoaded ? this.renderData() : <p>Loading...</p>}
-        <div className='char-loc-create-button'>
-          <p>Add {this.props.type}</p>
-          <p>+</p>
-        </div>
+        {!this.state.creatingNew ? (
+          <div className='char-loc-create-button' onClick={this.toggleCreateNew}>
+            <p>Add {this.props.type}</p>
+            <p>+</p>
+          </div>
+        ) : (
+          <NewCharLocForm
+            name={this.state.name}
+            description={this.state.description}
+            handleCharLocSubmit={this.handleCharLocSubmit}
+            handleInputChange={this.handleInputChange}
+            toggleCreateNew={this.toggleCreateNew}
+          />
+        )}
       </div>
     )
   }
