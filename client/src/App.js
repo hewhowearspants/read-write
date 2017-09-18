@@ -17,6 +17,7 @@ import RegisterForm from './components/RegisterForm';
 import BookList from './components/BookList';
 import BookSearch from './components/BookSearch';
 import ProjectList from './components/ProjectList';
+import Project from './components/Project';
 import Dash from './components/Dash';
 import Footer from './components/Footer';
 
@@ -242,6 +243,11 @@ class App extends Component {
             exact path="/projects"
             render={() =>
               this.state.auth ? <ProjectList /> : <Redirect to="/login" />}
+          />
+          <Route
+            exact path='/projects/:id'
+            render={(routeProps) => 
+              this.state.auth ? <Project routeProps={routeProps} /> : <Redirect to="/login" />}
           />
           </main>
           <Footer 
