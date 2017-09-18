@@ -12,7 +12,16 @@ class ProjectList extends Component {
     this.state = {
       projectData: null,
       projectDataLoaded: false,
+      creatingProject: false,
+      // form fields
+      projectTitle: '',
+      projectSubtitle: '',
+      projectSynopsis: '',
     }
+
+    this.toggleCreateProject = this.toggleCreateProject.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -29,6 +38,57 @@ class ProjectList extends Component {
     }).catch((err) => {
       console.log(err);
     })
+  }
+
+  toggleCreateProject() {
+    this.setState((prevState) => {
+      return {
+        projectTitle: '',
+        projectSubtitle: '',
+        projectSynopsis: '',
+        creatingProject: !prevState.creatingProject,
+      }
+    })
+  }
+
+  handleInputChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  // sends project create request to server
+  handleProjectSubmit(event) {
+    event.preventDefault();
+    axios('/projects', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Token ${Auth.getToken()}`,
+        token: Auth.getToken(),
+      },
+      data: {
+        project: {
+          title: this.state.projectTitle,
+          subtitle: this.state.projectSubtitle,
+          synopsis: this.state.projectSynopsis,
+        }
+      }
+    }).then((res) => {
+      console.log(res);
+      this.setState((prevState) => {
+        return {
+          projectData: prevState.projectData.concat(res.data.project),
+          projectTitle: '',
+          projectSubtitle: '',
+          projectSynopsis: '',
+          creatingProject: false,
+        }
+      });
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   renderProjects() {
