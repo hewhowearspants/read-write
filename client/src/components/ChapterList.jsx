@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import Auth from '../modules/Auth';
 
+import Chapter from './Chapter';
+
 class ChapterList extends Component {
   constructor() {
     super();
