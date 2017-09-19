@@ -9,7 +9,7 @@ class FeedbackModal extends Component {
     return(
       <div className='modal-backdrop'>
         <div className='feedback-modal'>
-          <p>What did you think of the book?</p>
+          <p>What did you think of it?</p>
           <form>
             <div className='rating'>
               <input onChange={this.props.handleInputChange} className="star star-5" id="star-5" type="radio" name="bookRating" value='5'/>
