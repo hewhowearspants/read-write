@@ -28,13 +28,25 @@ const BookSingle = (props) => {
       )}
       <div className="book-single-bottom">
         <div className="book-mark-read">
-          {props.book.read ? <p onClick={() => props.handleFeedbackSubmit(props.book.id)}>Mark Unread</p> : <p onClick={() => props.setBookToRate(props.book.id)}>Mark Read</p>}
+          {props.book.read ? (
+            <button onClick={() => props.handleFeedbackSubmit(props.book.id)}>
+              <i className="fa fa-check-circle-o" aria-hidden="true"></i>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+              <i className="fa fa-circle-o" aria-hidden="true"></i>
+            </button>
+          ) : (
+            <button onClick={() => props.setBookToRate(props.book.id)}>
+              <i className="fa fa-circle-o" aria-hidden="true"></i>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+              <i className="fa fa-check-circle-o" aria-hidden="true"></i>
+            </button>
+          )}
         </div>
         <div className="book-show-info">
           {props.bookToShow === props.book.id ? (
-            <button onClick={() => props.setBookToShow(null)}>-</button>
+            <button onClick={() => props.setBookToShow(null)}><i className="fa fa-minus" aria-hidden="true"></i></button>
           ) : (
-            <button onClick={() => props.setBookToShow(props.book.id)}>+</button>
+            <button onClick={() => props.setBookToShow(props.book.id)}><i className="fa fa-plus" aria-hidden="true"></i></button>
           )}
         </div>
       </div>
