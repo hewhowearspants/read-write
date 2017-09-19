@@ -47,8 +47,8 @@ const NewBookForm = (props) => {
           onChange={props.handleInputChange}
         />
         <div className='buttons'>
-          <button className='submit-button' type="submit"><i className="fa fa-share" aria-hidden="true"></i></button>
-          <button className='cancel-button' onClick={props.toggleCreateBook}><i className="fa fa-times" aria-hidden="true"></i></button>
+          <button className='submit-button' type="submit" title="Submit"><i className="fa fa-share" aria-hidden="true"></i></button>
+          <button className='cancel-button' onClick={props.toggleCreateBook} title="Cancel"><i className="fa fa-times" aria-hidden="true"></i></button>
         </div>
       </form>
     </div>
