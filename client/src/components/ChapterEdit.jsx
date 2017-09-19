@@ -21,8 +21,8 @@ class ChapterEdit extends Component {
     return (
       <div className='chapter-edit'>
         <p><span onClick={() => this.props.setChapterToShow(null)}>Chapters</span> > 
-           Chapter <input type='text' name='chapterNumber' value={this.props.chapterNumber} placeholder='#' onChange={this.props.handleInputChange}/>
-           : <input type='text' name='chapterTitle' value={this.props.chapterTitle} placeholder='title' onChange={this.props.handleInputChange}/>
+           Chapter <input className='chapter-number-input' type='text' name='chapterNumber' value={this.props.chapterNumber} placeholder='#' onChange={this.props.handleInputChange}/>
+           : <input className='chapter-title-input' type='text' name='chapterTitle' value={this.props.chapterTitle} placeholder='title' onChange={this.props.handleInputChange}/>
         </p>
         <ReactQuill value={this.props.chapterContent} onChange={this.props.handleContentChange} />
         <div className='buttons'>
