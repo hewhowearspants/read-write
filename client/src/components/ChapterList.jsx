@@ -208,13 +208,37 @@ class ChapterList extends Component {
       !this.state.chapterToShow ? (
         <div className="chapter-list">
           {this.state.chapterDataLoaded ? this.renderChapters() : <p>Loading...</p>}
-          <div className='chapter-create-button'>
-            <p>Add Chapter</p>
-            <p>+</p>
-          </div>
+          {!this.state.creatingChapter ? (
+            <div className='chapter-create-button' onClick={this.toggleCreateChapter}>
+              <p>Add Chapter</p>
+              <p>+</p>
+            </div>
+          ) : (
+            <NewChapterForm toggleCreateChapter={this.toggleCreateChapter} handleInputChange={this.handleInputChange} handleChapterSubmit={this.handleChapterSubmit}/>
+          )}
         </div>
       ) : (
-        <Chapter projectData={this.props.projectData} setChapterToShow={this.setChapterToShow} chapter={this.state.chapterToShow} />
+        !this.state.chapterToEdit ? (
+          <Chapter 
+            projectData={this.props.projectData} 
+            setChapterToShow={this.setChapterToShow} 
+            setChapterToEdit={this.setChapterToEdit}
+            deleteChapter={this.deleteChapter}
+            chapter={this.state.chapterToShow} 
+          />
+        ) : (
+          <ChapterEdit 
+            setChapterToShow={this.setChapterToShow}
+            setChapterToEdit={this.setChapterToEdit} 
+            handleInputChange={this.handleInputChange} 
+            handleContentChange={this.handleContentChange}
+            handleChapterEditSubmit={this.handleChapterEditSubmit}
+            chapterNumber={this.state.chapterNumber}
+            chapterTitle={this.state.chapterTitle}
+            chapterContent={this.state.chapterContent}
+            chapter={this.state.chapterToEdit} 
+          />
+        )
       )
     )
   }
