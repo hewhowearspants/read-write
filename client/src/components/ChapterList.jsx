@@ -4,6 +4,8 @@ import axios from 'axios';
 import Auth from '../modules/Auth';
 
 import Chapter from './Chapter';
+import ChapterEdit from './ChapterEdit';
+import NewChapterForm from './NewChapterForm';
 
 class ChapterList extends Component {
   constructor() {
