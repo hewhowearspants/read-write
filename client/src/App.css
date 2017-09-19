@@ -6,7 +6,17 @@ p {
   margin: 0;
 }
 
-input[type='text'] {
+a {
+  color: inherit;
+}
+
+button {
+  outline: transparent;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
   outline: transparent;
 }
 
@@ -32,6 +42,42 @@ header p {
   padding: 0px 5px;
   margin: 0;
   font-size: 24px;
+}
+
+.loginform,
+.registerform {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginform form,
+.registerform form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginform input[type='text'],
+.loginform input[type='password'],
+.registerform input[type='text'],
+.registerform input[type='password'],
+.registerform input[type='email'] {
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin: 10px;
+  padding: 5px;
+}
+
+.loginform button,
+.registerform button {
+  max-width: 100px;
+  font: 20px helvetica;
+  padding: 10px;
+  margin: 10px;
 }
 
 nav {
@@ -100,16 +146,12 @@ main {
 
 .char-loc-single-top {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.char-loc-single-top button {
-  align-self: flex-end;
-}
-
-.char-loc-single-bottom {
-  transform-origin: 50% 0%;
-  animation: slide-down .5s;
+.char-loc-single-bottom p {
+  margin: 10px 0;
 }
 
 .book-single-container,
@@ -145,7 +187,8 @@ main {
 .chapter-single {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid grey;
+  border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
 }
@@ -154,6 +197,10 @@ main {
 .project-single,
 .char-loc-single {
   width: 100%;
+}
+
+.project-single {
+  margin: 10px 0;
 }
 
 .chapter-list {
@@ -181,14 +228,32 @@ main {
 }
 .book-single-top {
   justify-content: space-between;
+  margin: 5px;
 }
-.book-single-bottom {
+.book-single-bottom,
+.project-single-bottom {
+  display: flex;
   justify-content: flex-end;
 }
 
+.project-single-bottom a {
+  background-color: tan;
+  margin-right: -6px;
+  margin-bottom: -6px;
+  border-right: 1px solid saddlebrown;
+  border-bottom: 1px solid saddlebrown;
+  border-radius: 5px 0 5px 0 ;
+  font-size: 24px;
+  width: 40px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 0px 2px 2px;
+}
+
 .book-single-info {
-  width: 95%;
-  border: 1px solid black;
+  width: 94%;
+  border: 1px solid grey;
+  border-radius: 0px 0px 5px 5px;
   border-top: 0;
   padding: 5px;
   animation: slide-down .5s;
@@ -196,15 +261,12 @@ main {
   min-height: auto;
 }
 
-@keyframes slide-down {
-  0% { transform: scaleY(0) }
-}
-
 .bookcreateform,
 .projectcreateform,
 .chaptercreateform,
 .char-loc-createform {
   border: 1px solid black;
+  border-radius: 5px;
   padding: 5px;
   margin: 5px;
 }
@@ -229,9 +291,12 @@ main {
 }
 
 .bookcreateform .buttons,
+.book-single .buttons,
 .projectcreateform .buttons,
 .chaptercreateform .buttons,
 .char-loc-createform .buttons,
+.char-loc-single .buttons,
+.chapter .buttons,
 .links {
   display: flex; 
   justify-content: flex-end;
@@ -239,10 +304,20 @@ main {
   margin-bottom: -6px;
 }
 
+.feedback-modal .buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .bookcreateform button,
+.book-single button,
 .projectcreateform button,
 .chaptercreateform button,
 .char-loc-createform button,
+.char-loc-single button,
+.feedback-modal button,
+.chapter button,
 .links button {
   margin-left: 0px;
   border: none;
@@ -253,31 +328,85 @@ main {
   padding: 2px 6px 3px;
 }
 
+.char-loc-single .char-loc-info-toggle-button {
+  margin-top: -6px;
+  margin-right: -6px;
+  border-radius: 0px 5px 0px 5px;
+}
+
+.book-single .mark-read-toggle-button {
+  font-size: 16px;
+  width: 60px;
+  border-radius: 5px 0px 0px 0px;
+  background-color: rgb(33, 150, 243);
+  border-bottom: 1px solid navy;
+}
+
+.book-single .mark-read-toggle-button i {
+  margin: 0 2px;
+}
+
+.book-single .book-info-toggle-button {
+  border-radius: 0px 0px 5px 0px;
+  border-bottom: 1px solid darkslategray;
+  border-right: 1px solid darkslategray;
+}
+
 .bookcreateform .submit-button,
 .projectcreateform .submit-button,
 .chaptercreateform .submit-button,
 .char-loc-createform .submit-button,
+.char-loc-single .submit-button,
+.feedback-modal .submit-button,
 .links .submit-button {
   background-color: lightgreen;
   border-bottom: 1px solid forestgreen;
+  border-radius: 5px 0px 0px 0px;
 }
 
 .bookcreateform .cancel-button,
 .projectcreateform .cancel-button,
 .chaptercreateform .cancel-button,
 .char-loc-createform .cancel-button,
+.char-loc-single .cancel-button,
+.feedback-modal .cancel-button,
 .links .cancel-button {
   background-color: lightcoral;
   border-bottom: 1px solid darkred;
   border-right: 1px solid darkred;
+  border-radius: 0px 0px 5px 0px;
 }
 
-.links .edit-button {
+.feedback-modal .submit-button {
+  border-bottom: none;
+}
+
+.feedback-modal .cancel-button {
+  border-bottom: none;
+  border-right: none;
+}
+
+.links .edit-button,
+.char-loc-single .edit-button,
+.chapter .edit-button {
   background-color: lightblue;
+  border-bottom: 1px solid darkblue;
+  border-radius: 5px 0px 0px 0px;
 }
 
-.links .delete-button {
+.links .delete-button,
+.char-loc-single .delete-button,
+.chapter .delete-button {
   background-color: lightcoral;
+  border-bottom: 1px solid crimson;
+  border-right: 1px solid crimson;
+  border-radius: 0px 0px 5px 0px;
+}
+
+.chapter .edit-button,
+.chapter .delete-button {
+  border-bottom: none;
+  border-right: none;
 }
 
 .modal-backdrop {
@@ -287,16 +416,42 @@ main {
   left: 0;
   right: 0;
   background-color: rgba(0,0,0,0.25);
-  padding: 50px;
+  padding: 100px 50px;
 }
 
 .feedback-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(255,255,255,1);
   border-radius: 5px;
   max-width: 300px;
-  min-height: 300px;
+  min-height: 200px;
   margin: 0 auto;
   padding: 30px;
+}
+
+.feedback-modal form {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-modal textarea {
+  outline: transparent;
+  height: 100px;
+  font-size: 14px;
+  margin: 10px 0;
+  padding: 5px;
+  resize: none;
+}
+
+.project-nav {
+  display: flex;
+  justify-content: center;
 }
 
 .project-nav ul {
@@ -305,11 +460,11 @@ main {
   justify-content: center;
   padding: 0;
   margin: 0;
-  width: 100%;
+  width: 95%;
 }
 
 .project-nav li {
-  padding: 10px;
+  padding: 10px 7px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -320,16 +475,16 @@ main {
   border-right: 1px solid black;
 }
 
-.project .edit-button {
+.project .edit-field-button {
   margin-left: 5px;
   opacity: 0;
   transition: .25s all;
   cursor: pointer;
 }
 
-.project h3:hover .edit-button,
-.project h4:hover .edit-button,
-.project p:hover .edit-button {
+.project h3:hover .edit-field-button,
+.project h4:hover .edit-field-button,
+.project p:hover .edit-field-button {
   opacity: 1;
 }
 
@@ -431,4 +586,8 @@ input:checked + .slider:before {
 .selected {
   background-color: black;
   color: white;
+}
+
+@keyframes slide-down {
+  0% { transform: scaleY(0) }
 }
