@@ -53,8 +53,8 @@ const BookSingleInfo = (props) => {
         </div>
       ) : (
         <div className="book-middle">
-          <p>Year: {props.book.year}</p>
-          <p>Genre: {props.book.genre}</p>
+          <p>{props.book.year}</p>
+          <p>{props.book.genre}</p>
         </div>
       )}
       <div className="book-bottom">
