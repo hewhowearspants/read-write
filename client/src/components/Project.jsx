@@ -108,7 +108,7 @@ class Project extends Component {
             <h3><Link to='/projects'>Projects</Link> > {this.state.fieldToEdit !== 'title' ? (
               <span>
                 {this.state.projectData.title}
-                <span className='edit-button' onClick={() => this.setFieldToEdit('title')}> 
+                <span className='edit-field-button' onClick={() => this.setFieldToEdit('title')}> 
                   <i className="fa fa-pencil" aria-hidden="true"></i>
                 </span>
               </span>
@@ -131,7 +131,7 @@ class Project extends Component {
               {this.state.fieldToEdit !== 'subtitle' ? (
                 <span>
                   {this.state.projectData.subtitle}
-                  <span className='edit-button' onClick={() => this.setFieldToEdit('subtitle')}> 
+                  <span className='edit-field-button' onClick={() => this.setFieldToEdit('subtitle')}> 
                     <i className="fa fa-pencil" aria-hidden="true"></i>
                   </span>
                 </span>
@@ -152,7 +152,7 @@ class Project extends Component {
             <ProjectNav setPage={this.setPage} currentPage={this.state.currentPage} />
             {this.state.currentPage === 'synopsis' ? (
               this.state.fieldToEdit !== 'synopsis' ? (
-                <p className='synopsis'>{this.state.projectData.synopsis}<span className='edit-button' onClick={() => this.setFieldToEdit('synopsis')}><i className="fa fa-pencil" aria-hidden="true"></i></span></p> 
+                <p className='synopsis'>{this.state.projectData.synopsis}<span className='edit-field-button' onClick={() => this.setFieldToEdit('synopsis')}><i className="fa fa-pencil" aria-hidden="true"></i></span></p> 
               ) : (
                 <span>
                   <input
