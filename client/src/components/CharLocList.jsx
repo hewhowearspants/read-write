@@ -200,9 +200,9 @@ class CharLocList extends Component {
               />
             )}
             {this.state.dataToShow !== data.id ? (
-              <button onClick={() => this.setDataToShow(data.id)}>+</button>
+              <button className='char-loc-info-toggle-button' onClick={() => this.setDataToShow(data.id)} title="More Info"><i className="fa fa-plus" aria-hidden="true"></i></button>
             ) : (
-              <button onClick={() => this.setDataToShow(null)}>-</button>
+              <button className='char-loc-info-toggle-button' onClick={() => this.setDataToShow(null)} title="Less Info"><i className="fa fa-minus" aria-hidden="true"></i></button>
             )}
           </div>
           {this.state.dataToShow === data.id ? (
@@ -220,13 +220,13 @@ class CharLocList extends Component {
               )}
               {this.state.dataToEdit !== data.id ? (
                 <div className='buttons'>
-                  <span onClick={() => this.setDataToEdit(data.id)}>Edit</span>
-                  <span onClick={() => this.deleteCharLoc(data.id)}>Delete</span>
+                  <button className='edit-button' onClick={() => this.setDataToEdit(data.id)} title="Edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button className='delete-button' onClick={() => this.deleteCharLoc(data.id)} title="Delete"><i className="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
               ) : (
                 <div className='buttons'>
-                  <span onClick={() => this.setDataToEdit(null)}>Cancel</span>
-                  <span onClick={() => this.handleCharLocEditSubmit()}>Submit</span>
+                  <button className='submit-button' onClick={() => this.handleCharLocEditSubmit()} title="Submit"><i className="fa fa-share" aria-hidden="true"></i></button>
+                  <button className='cancel-button' onClick={() => this.setDataToEdit(null)} title="Cancel"><i className="fa fa-times" aria-hidden="true"></i></button>
                 </div>
               )}
             </div>
