@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Auth from '../modules/Auth';
@@ -104,7 +105,7 @@ class Project extends Component {
       <div className='project-wrapper'>
         {this.state.projectDataLoaded ? (
           <div className='project'>
-            <h3>Projects > {this.state.fieldToEdit !== 'title' ? (
+            <h3><Link to='/projects'>Projects</Link> > {this.state.fieldToEdit !== 'title' ? (
               <span>
                 {this.state.projectData.title}
                 <span onClick={() => this.setFieldToEdit('title')}> Edit</span>
