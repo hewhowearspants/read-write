@@ -189,7 +189,7 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-          <Header toggleNavPane={this.toggleNavPane} />
+          <Header toggleNavPane={this.toggleNavPane} showNavPane={this.state.showNavPane} />
           <NavPane showNavPane={this.state.showNavPane} logoutUser={this.logoutUser} />
           <main>
           <Route
