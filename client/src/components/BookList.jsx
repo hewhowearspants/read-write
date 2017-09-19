@@ -366,11 +366,12 @@ class BookList extends Component {
     return (
       <div className='booklist'>
         <div className='book-read-toggle'>
-          <p>
-            <span style={!this.state.booksRead ? {color:"red"} : {color:""}}>Unread </span> 
-            <span onClick={this.toggleBooksRead}>-X-</span>
-            <span style={this.state.booksRead ? {color:"red"} : {color:""}}> Read</span>
-          </p>
+          <span style={!this.state.booksRead ? {color:"#2196F3"} : {color:""}}>Unread </span> 
+          <label className='switch'>
+            <input type='checkbox' />
+            <span className='slider round' onClick={this.toggleBooksRead}></span>
+          </label>
+          <span style={this.state.booksRead ? {color:"#2196F3"} : {color:""}}> Read</span>
         </div>
         {(this.state.bookDataLoaded ? this.showBooks() : <p>Loading...</p>)}
         {!this.state.creatingBook ? (
