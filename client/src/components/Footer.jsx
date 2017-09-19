@@ -11,7 +11,7 @@ const Footer = (props) => {
           placeholder="find books"
           onChange={props.handleInputChange}
         />
-        <input type="submit" value="Search" />
+        <button type="submit"><i className="fa fa-search" aria-hidden="true"></i></button>
       </form>
     </footer>
   )
