@@ -89,8 +89,6 @@ class Project extends Component {
       }
     }).then((res) => {
       console.log(res);
-      // const newProjectData = [...this.state.projectData];
-      // newProjectData[this.state.fieldToEdit] = res.data.project[this.state.fieldToEdit];
       this.setState({
         projectData: res.data.project,
         [this.state.fieldToEdit]: '',
