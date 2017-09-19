@@ -33,7 +33,7 @@ class RegisterForm extends Component {
             placeholder="name"
             onChange={this.props.handleInputChange}
           />
-          <input type="submit" value="Register" />
+          <button type="submit">Register</button>
         </form>
       </div>
     )
