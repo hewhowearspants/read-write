@@ -18,8 +18,10 @@ const NewCharLocForm = (props) => {
           placeholder="description"
           onChange={props.handleInputChange}
         />
-        <input type="submit" value="Submit" />
-        <button onClick={props.toggleCreateNew}>Cancel</button>
+        <div className='buttons'>
+          <button className='submit-button' type="submit"><i className="fa fa-share" aria-hidden="true"></i></button>
+          <button className='cancel-button' onClick={props.toggleCreateNew}><i className="fa fa-times" aria-hidden="true"></i></button>
+        </div>
       </form>
     </div>
   )
