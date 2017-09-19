@@ -58,6 +58,9 @@ const BookSingleInfo = (props) => {
         </div>
       )}
       <div className="book-bottom">
+        <div className='user-rating'>
+          {renderRating()}
+        </div>
         {props.bookToEdit !== props.book.id ? (
           <div className="links">
             <span onClick={() => props.setBookToEdit(props.book.id)}>Edit</span>
