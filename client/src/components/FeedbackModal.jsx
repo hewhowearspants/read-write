@@ -25,8 +25,10 @@ class FeedbackModal extends Component {
             </div>
             <textarea onChange={this.props.handleInputChange} name='bookComment' type='text' placeholder='Well...'></textarea>
           </form>
-          <button onClick={this.props.onClose}>Cancel</button>
-          <button onClick={() => this.props.handleFeedbackSubmit(this.props.bookToRate)}>Submit</button>
+          <div className='buttons'>
+            <button className='submit-button' onClick={() => this.props.handleFeedbackSubmit(this.props.bookToRate)}><i className="fa fa-share" aria-hidden="true"></i></button>
+            <button className='cancel-button' onClick={this.props.onClose}><i className="fa fa-times" aria-hidden="true"></i></button>
+          </div>
         </div>
       </div>
     )
