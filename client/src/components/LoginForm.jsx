@@ -21,7 +21,7 @@ class LoginForm extends Component {
             placeholder="password"
             onChange={this.props.handleInputChange}
           />
-          <input type="submit" value="Log In" />
+          <button type="submit">Log In</button>
         </form>
         <p>Not registered? <Link to="/register">Join Us!</Link></p>
       </div>
