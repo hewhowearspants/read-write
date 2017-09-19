@@ -10,7 +10,7 @@ const ProjectSingle = (props) => {
         <p className='project-subtitle'>{props.project.subtitle}</p>
       </div>
       <div className="project-single-bottom">
-        <Link to={`/projects/${props.project.id}`}>Open</Link>
+        <Link to={`/projects/${props.project.id}`}><i className="fa fa-folder-open" aria-hidden="true" title="Open Project"></i></Link>
       </div>
     </div>
   )
