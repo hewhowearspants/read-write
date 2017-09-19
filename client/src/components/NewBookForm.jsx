@@ -33,7 +33,7 @@ const NewBookForm = (props) => {
           onChange={props.handleInputChange}
         />
         <input
-          type="number"
+          type="text"
           name="bookYear"
           value={props.bookYear}
           placeholder="year"
