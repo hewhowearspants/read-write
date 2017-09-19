@@ -1,4 +1,4 @@
-require 'Httparty'
+# require 'Httparty'
 
 class BooksController < ApiController
 
