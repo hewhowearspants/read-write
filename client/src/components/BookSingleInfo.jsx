@@ -63,13 +63,13 @@ const BookSingleInfo = (props) => {
         </div>
         {props.bookToEdit !== props.book.id ? (
           <div className="links">
-            <span onClick={() => props.setBookToEdit(props.book.id)}>Edit</span>
-            <span onClick={() => props.deleteBook(props.book.id)}>Delete</span>
+            <button className='edit-button' onClick={() => props.setBookToEdit(props.book.id)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+            <button className='delete-button' onClick={() => props.deleteBook(props.book.id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
           </div>
         ) : (
           <div className="links">
-            <span onClick={() => props.handleBookEditSubmit()}>Submit</span>
-            <span onClick={() => props.setBookToEdit(null)}>Cancel</span>
+            <button className='submit-button' onClick={() => props.handleBookEditSubmit()}><i className="fa fa-share" aria-hidden="true"></i></button>
+            <button className='cancel-button' onClick={() => props.setBookToEdit(null)}><i className="fa fa-times" aria-hidden="true"></i></button>
           </div>
         )}
       </div>
