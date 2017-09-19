@@ -196,8 +196,8 @@ class ChapterList extends Component {
     return this.state.chapterData.map((chapter) => {
       return (
         <div className='chapter-single' key={chapter.id} onClick={() => this.setChapterToShow(chapter.id)}>
-          <p>{chapter.chapter_number}</p>
-          <p>{chapter.title}</p>
+          <p className='chapter-number'>{chapter.chapter_number}</p>
+          <p className='chapter-title'>{chapter.title}</p>
         </div>
       )
     })
