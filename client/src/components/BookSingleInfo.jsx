@@ -1,6 +1,15 @@
 import React from 'react';
 
 const BookSingleInfo = (props) => {
+  // renders number of stars based on user's rating
+  const renderRating = () => {
+    let rating = []
+    for(let i = 0; i < props.book.user_rating; i++) {
+      rating.push(<span key={i}><i className="fa fa-star" aria-hidden="true"></i></span>)
+    }
+    return rating;
+  }
+
   return (
     <div className="book-single-info">
       {props.bookToEdit !== props.book.id ? (
