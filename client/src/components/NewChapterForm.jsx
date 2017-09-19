@@ -18,8 +18,10 @@ const NewChapterForm = (props) => {
           placeholder='title'
           onChange={props.handleInputChange}
         />
-        <input type='submit' value='Submit' />
-        <button onClick={props.toggleCreateChapter}>Cancel</button>
+        <div className='buttons'>
+          <button className='submit-button' type='submit'><i className="fa fa-share" aria-hidden="true"></i></button>
+          <button className='cancel-button' onClick={props.toggleCreateChapter}><i className="fa fa-times" aria-hidden="true"></i></button>
+        </div>
       </form>
     </div>
   )
