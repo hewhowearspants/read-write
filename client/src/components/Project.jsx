@@ -165,7 +165,6 @@ class Project extends Component {
             <ProjectNav setPage={this.setPage} currentPage={this.state.currentPage} />
             {/* below is a sort of router */}
             {this.state.currentPage === 'synopsis' ? (
-              {/* SYNOPSIS: DISPLAY OR EDIT */}
               this.state.fieldToEdit !== 'synopsis' ? (
                 <p className='synopsis'>{this.state.projectData.synopsis}<span className='edit-field-button' onClick={() => this.setFieldToEdit('synopsis')}><i className="fa fa-pencil" aria-hidden="true"></i></span></p> 
               ) : (
