@@ -1,5 +1,6 @@
 .app {
   overflow: hidden;
+  font-family: 'Averia Serif Libre', cursive;
 }
 
 p {
@@ -36,6 +37,8 @@ header {
 
 header h1 {
   margin: 0;
+  font-family: 'Fredericka the Great', cursive;
+  font-weight: normal;
 }
 
 header p {
