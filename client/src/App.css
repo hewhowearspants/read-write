@@ -89,8 +89,8 @@ nav {
   position: fixed;
   width: 150px;
   right: 0;
-  top: 51px;
-  height: calc(100vh - 51px - 39px);
+  top: 53px;
+  height: calc(100vh - 53px - 39px);
   border-left: 1px solid black;
   transition: .25s all;
   background-color: white;
@@ -115,9 +115,9 @@ nav ul li a {
 
 main {
   padding: 0px 10px 0px 10px;
-  margin: 51px 0px 39px 0px;
+  margin: 53px 0px 39px 0px;
   width: calc(100vw - 20px);
-  height: calc(100vh - 90px);
+  height: calc(100vh - 92px);
   overflow-y: auto;
 }
 
