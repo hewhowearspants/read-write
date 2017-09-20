@@ -1,5 +1,6 @@
 import React from 'react';
 
+// component renders the title and author in BookList, and contains More Info and Mark Read/Unread buttons
 const BookSingle = (props) => {
   return (
     <div className='book-single'>

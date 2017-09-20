@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this is the new character/location creation form
 const NewCharLocForm = (props) => {
   return (
     <div className="char-loc-createform">

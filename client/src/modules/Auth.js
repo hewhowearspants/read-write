@@ -1,3 +1,5 @@
+// contains a series of methods to set user token to sessionStorage
+
 class Auth {
   static authenticateToken(token) {
     sessionStorage.setItem('token', token);

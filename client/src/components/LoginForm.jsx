@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
+// this is the form for logging in. also link to new user register form
 class LoginForm extends Component {
   render() {
     return (

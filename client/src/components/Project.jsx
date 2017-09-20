@@ -8,11 +8,14 @@ import ProjectNav from './ProjectNav';
 import ChapterList from './ChapterList';
 import CharLocList from './CharLocList';
 
+// this component holds all of the project information (synopis, chapters, characters, locations)
+// user chooses what to see based on a nav bar
 class Project extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      // vvvvv sets which project info component to display
       currentPage: 'synopsis',
       projectData: null,
       projectDataLoaded: false,
@@ -23,12 +26,14 @@ class Project extends Component {
       synopsis: '',
     }
 
+    // method binders
     this.setPage = this.setPage.bind(this);
     this.setFieldToEdit = this.setFieldToEdit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormFieldSubmit = this.handleFormFieldSubmit.bind(this);
   }
 
+  // loads individual project info on load
   componentDidMount() {
     console.log(this.props.routeProps.match.params.id);
     axios.get(`/projects/${this.props.routeProps.match.params.id}`, {
@@ -47,12 +52,14 @@ class Project extends Component {
     });
   }
 
+  // sets the component to be displayed
   setPage(name) {
     this.setState({
       currentPage: name,
     })
   }
 
+  // sets which field is being edited, user can edit individual form fields for general project info (title, synopsis, etc)
   setFieldToEdit(fieldName) {
     if(fieldName) {
       this.setState({
@@ -67,6 +74,7 @@ class Project extends Component {
     }
   }
 
+  // generic form input change method
   handleInputChange(event) {
     const name = event.target.name;
     const value = event.target.value;
@@ -75,8 +83,11 @@ class Project extends Component {
     });
   }
 
+  // updates project data for individual form fields
   handleFormFieldSubmit() {
+    // this feels vaguely unnatural
     let dataToUpdate = this.state[this.state.fieldToEdit];
+
     axios(`/projects/${this.state.projectData.id}`, {
       method: 'PATCH',
       headers: {
@@ -105,6 +116,7 @@ class Project extends Component {
       <div className='project-wrapper'>
         {this.state.projectDataLoaded ? (
           <div className='project'>
+            {/* TITLE: DISPLAY OR EDIT */}
             <h3><Link to='/projects'>Projects</Link> > {this.state.fieldToEdit !== 'title' ? (
               <span>
                 {this.state.projectData.title}
@@ -149,8 +161,11 @@ class Project extends Component {
                 </span>
              )}
             </h4>
+            {/* nav bar component for display different project components */}
             <ProjectNav setPage={this.setPage} currentPage={this.state.currentPage} />
+            {/* below is a sort of router */}
             {this.state.currentPage === 'synopsis' ? (
+              {/* SYNOPSIS: DISPLAY OR EDIT */}
               this.state.fieldToEdit !== 'synopsis' ? (
                 <p className='synopsis'>{this.state.projectData.synopsis}<span className='edit-field-button' onClick={() => this.setFieldToEdit('synopsis')}><i className="fa fa-pencil" aria-hidden="true"></i></span></p> 
               ) : (

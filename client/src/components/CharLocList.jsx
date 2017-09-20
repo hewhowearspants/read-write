@@ -5,8 +5,10 @@ import Auth from '../modules/Auth';
 
 import NewCharLocForm from './NewCharLocForm';
 
+// this component displays either a list of characters or a list of locations, based on what is set in 'type' in props
+// handles the CRUD functionality for both
 class CharLocList extends Component {
-    constructor() {
+  constructor() {
     super();
 
     this.state = {
@@ -29,6 +31,7 @@ class CharLocList extends Component {
     this.setDataToEdit = this.setDataToEdit.bind(this);
   }
 
+  // loads character/location info from rails, based on props.type
   componentDidMount() {
     let type = this.props.type + 's';
     axios.get(`/projects/${this.props.projectData.id}/${type}`, {
@@ -47,6 +50,7 @@ class CharLocList extends Component {
     });
   }
 
+  // toggles new character/location form
   toggleCreateNew() {
     this.setState((prevState) => {
       return {
@@ -55,12 +59,14 @@ class CharLocList extends Component {
     })
   }
 
+  // sets showing more character/location information
   setDataToShow(id) {
     this.setState({
       dataToShow: id,
     })
   }
 
+  // sets editing a character/location inline
   setDataToEdit(id) {
     if(id) {
       const dataToEdit = this.state.data.filter((charLoc) => {
@@ -84,6 +90,7 @@ class CharLocList extends Component {
     }
   }
 
+  // generic input change method
   handleInputChange(event) {
     const name = event.target.name;
     const value = event.target.value;
@@ -92,7 +99,7 @@ class CharLocList extends Component {
     });
   }
 
-  // sends character or location create request to server
+  // sends character/location create request to server
   handleCharLocSubmit(event) {
     event.preventDefault();
     let type = this.props.type;
@@ -123,7 +130,7 @@ class CharLocList extends Component {
     });
   }
 
-  // sends character or location create request to server
+  // sends character/location edit request to server
   handleCharLocEditSubmit() {
     let type = this.props.type;
     axios(`/projects/${this.props.projectData.id}/${type}s/${this.state.dataToEdit}`, {
@@ -159,6 +166,7 @@ class CharLocList extends Component {
     });
   }
 
+  // does what it says
   deleteCharLoc(id) {
     let type = this.props.type;
     axios(`/projects/${this.props.projectData.id}/${type}s/${id}`, {
@@ -183,6 +191,7 @@ class CharLocList extends Component {
     });
   }
 
+  // renders character/location list
   renderData() {
     return this.state.data.map((data) => {
       return (
@@ -242,6 +251,7 @@ class CharLocList extends Component {
     return (
       <div className="char-loc-list">
         {this.state.dataLoaded ? this.renderData() : <p>Loading...</p>}
+        {/* conditionally displays either add new character/location button or new character/location create form */}
         {!this.state.creatingNew ? (
           <div className='char-loc-create-button' onClick={this.toggleCreateNew}>
             <p>Add {this.props.type}</p>

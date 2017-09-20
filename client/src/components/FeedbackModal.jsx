@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// this is the modal window that lets the user give feedback on a book they have read
 class FeedbackModal extends Component {
   render() {
     if (!this.props.show) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// this is the new user registration form
 class RegisterForm extends Component {
   render() {
     return (

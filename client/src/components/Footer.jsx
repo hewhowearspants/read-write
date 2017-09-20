@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Footer contains the Google book API search form
 const Footer = (props) => {
   return (
     <footer>

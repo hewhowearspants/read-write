@@ -1,6 +1,7 @@
 class SessionsController < ApiController
   skip_before_action :require_login, only: [:create], raise: false
 
+  # create new login session
   def create
     if user = User.validate_login(params[:username], params[:password])
       allow_token_to_be_used_only_once_for(user)
@@ -10,6 +11,7 @@ class SessionsController < ApiController
     end
   end
 
+  # end session
   def destroy
     logout
     head :ok

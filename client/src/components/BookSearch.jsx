@@ -6,6 +6,7 @@ import Auth from '../modules/Auth';
 import BookSearchSingle from './BookSearchSingle.jsx';
 import BookSearchSingleInfo from './BookSearchSingleInfo';
 
+// this contains the google books api search results
 class BookSearch extends Component {
   constructor() {
     super();
@@ -17,10 +18,12 @@ class BookSearch extends Component {
     this.addBookToList = this.addBookToList.bind(this);
   }
 
+  // user can be redirected here, so this resets App.js redirect state
   componentWillMount() {
     this.props.setRedirect(null);
   }
 
+  // sets which book to show more info for
   setBookToShow(id) {
     console.log(id);
     if (id) {
@@ -34,6 +37,7 @@ class BookSearch extends Component {
     }
   }
 
+  // adds a selected book to the user's reading list
   addBookToList(id) {
     let bookToPost = {};
     this.props.bookSearchData.forEach((book) => {
@@ -63,6 +67,7 @@ class BookSearch extends Component {
     })
   }
 
+  // renders the google books api search results
   showSearchResults() {
     return this.props.bookSearchData.map((book) => {
       return (

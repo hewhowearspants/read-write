@@ -1,6 +1,7 @@
 class UsersController < ApiController
   before_action :require_login, except: [:create]
 
+  # create new user
   def create
     user = User.new(user_params)
     if user.save
@@ -10,6 +11,7 @@ class UsersController < ApiController
     end
   end
 
+  # get user info, including their books and projects
   def profile
     user = User.find_by_auth_token!(request.headers[:token])
     user_books = Book.where(user_id: user.id)

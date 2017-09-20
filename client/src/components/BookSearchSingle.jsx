@@ -1,5 +1,6 @@
 import React from 'react';
 
+// title and author, as well as add to list button and more info button
 const BookSearchSingle = (props) => {
   return (
     <div className='book-single'>
@@ -11,13 +12,13 @@ const BookSearchSingle = (props) => {
         <div className="book-add-to-list">
           {props.auth ? <button onClick={() => props.addBookToList(props.book.search_id)}>Add</button> : <p>Log in to add</p>}
         </div>
-      <div className="book-show-info">
-        {props.bookToShow === props.book.search_id ? (
-          <button onClick={() => props.setBookToShow(null)}>-</button>
-        ) : (
-          <button onClick={() => props.setBookToShow(props.book.search_id)}>+</button>
-        )}
-      </div>
+        <div className="book-show-info">
+          {props.bookToShow === props.book.search_id ? (
+            <button onClick={() => props.setBookToShow(null)}>-</button>
+          ) : (
+            <button onClick={() => props.setBookToShow(props.book.search_id)}>+</button>
+          )}
+        </div>
       </div>
     </div>
   )

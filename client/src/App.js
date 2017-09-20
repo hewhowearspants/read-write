@@ -21,7 +21,6 @@ import Project from './components/Project';
 import Dash from './components/Dash';
 import Footer from './components/Footer';
 
-
 class App extends Component {
   constructor() {
     super();
@@ -51,7 +50,7 @@ class App extends Component {
     this.toggleNavPane = this.toggleNavPane.bind(this);
   }
 
-  // toggle Nav panel
+  // toggle Nav pane
   toggleNavPane() {
     this.setState((prevState) => {
       return {
@@ -129,6 +128,7 @@ class App extends Component {
     });
   }
 
+  // initiates google api book search in rails
   searchBooks(event) {
     event.preventDefault();
     axios('/books/search', {
@@ -170,6 +170,7 @@ class App extends Component {
     });
   }
 
+  // sets which path to redirect to, BE SURE TO RESET TO NULL WHEN YOU GET THERE
   setRedirect(path) {
     this.setState({
       redirect: path,
@@ -254,6 +255,7 @@ class App extends Component {
             handleInputChange={this.handleInputChange} 
             searchBooks={this.searchBooks} 
           />
+          {/* this is the Redirector, redirects to whatever path you set in state */}
           {this.state.redirect ? <Redirect to={this.state.redirect} /> : ''}
         </div>
       </Router>

@@ -1,7 +1,8 @@
 import React from 'react';
 
+// component that displays additional book info when user clicks the More Info button
 const BookSingleInfo = (props) => {
-  // renders number of stars based on user's rating
+  // renders number of stars based on user's rating (1 - 5)
   const renderRating = () => {
     let rating = []
     for(let i = 0; i < props.book.user_rating; i++) {
@@ -12,6 +13,7 @@ const BookSingleInfo = (props) => {
 
   return (
     <div className="book-single-info">
+      {/* either render book description or a text form field for editing */}
       {props.bookToEdit !== props.book.id ? (
         <div className="book-description">
           <p>{props.book.description}</p>
@@ -27,6 +29,7 @@ const BookSingleInfo = (props) => {
           />
         </div>
       )}
+      {/* either display book information or form fields for editing */}
       {props.bookToEdit === props.book.id ? (
         <div className="book-middle">
           <input
@@ -61,6 +64,7 @@ const BookSingleInfo = (props) => {
         <div className='user-rating'>
           {renderRating()}
         </div>
+        {/* display either edit/delete buttons, or submit and cancel if editing */}
         {props.bookToEdit !== props.book.id ? (
           <div className="links">
             <button className='edit-button' onClick={() => props.setBookToEdit(props.book.id)} title="Edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>

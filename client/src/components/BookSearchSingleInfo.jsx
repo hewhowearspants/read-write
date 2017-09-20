@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this contains more info from the google books API search
 const BookSearchSingleInfo = (props) => {
   return (
     <div className="book-single-info">

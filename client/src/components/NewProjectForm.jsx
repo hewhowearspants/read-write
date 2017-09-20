@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this is the new project creation form
 const NewProjectForm = (props) => {
   return (
     <div className="projectcreateform">

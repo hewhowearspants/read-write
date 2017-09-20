@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+// project list display component, with link to open project
 const ProjectSingle = (props) => {
   return (
     <div className={`project-single`}>

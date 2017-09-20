@@ -1,5 +1,6 @@
 import React from 'react';
 
+// form for creating new chapters
 const NewChapterForm = (props) => {
   return (
     <div className="chaptercreateform">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// header, contains title and nav pane button
 class Header extends Component {
   render() {
     return (

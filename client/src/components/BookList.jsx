@@ -7,6 +7,7 @@ import BookSingleInfo from './BookSingleInfo';
 import NewBookForm from './NewBookForm';
 import FeedbackModal from './FeedbackModal';
 
+// BookList handles most of the methods pertaining to book CRUD
 class BookList extends Component {
   constructor() {
     super();
@@ -14,6 +15,7 @@ class BookList extends Component {
     this.state = {
       bookData: null,
       bookDataLoaded: false,
+      // vvvvv weirdly named, toggles whether or not to display books that were marked read
       booksRead: false,
       bookToShow: null,
       bookToEdit: null,
@@ -30,6 +32,7 @@ class BookList extends Component {
       bookComment: '',
     }
 
+    // method binders
     this.toggleBooksRead = this.toggleBooksRead.bind(this);
     this.toggleCreateBook = this.toggleCreateBook.bind(this);
     this.setBookToRate = this.setBookToRate.bind(this);
@@ -201,7 +204,6 @@ class BookList extends Component {
 
   // sends book edit request to server
   handleBookEditSubmit() {
-    //event.preventDefault();
     axios(`/books/${this.state.bookToEdit}`, {
       method: 'PATCH',
       headers: {
@@ -242,6 +244,8 @@ class BookList extends Component {
     });
   }
 
+  // updates user rating and comments when user marks book as read
+  // also toggles book back to unread status
   handleFeedbackSubmit(id) {
     var bookToRate = this.state.bookData.filter((book, index) => {
       if(book.id === id) {
@@ -292,6 +296,7 @@ class BookList extends Component {
     });
   }
 
+  // does what it says
   deleteBook(id) {
     axios(`/books/${id}`, {
       method: 'DELETE',
@@ -301,6 +306,7 @@ class BookList extends Component {
       }
     }).then((res) => {
       console.log(res);
+      // remove deleted book from state
       const newBookData = [...this.state.bookData];
       newBookData.forEach((book, index, array) => {
         if (book.id === id) {
@@ -315,6 +321,7 @@ class BookList extends Component {
     });
   }
 
+  // displays list of books based their read status
   showBooks() {
     const booksToShow = this.state.bookData.filter((book) => {
       if (book.read === this.state.booksRead) {
@@ -365,6 +372,7 @@ class BookList extends Component {
   render() {
     return (
       <div className='booklist'>
+        {/* this is the toggle switch for displaying either read or unread books */}
         <div className='book-read-toggle'>
           <span style={!this.state.booksRead ? {color:"#2196F3"} : {color:""}}>Unread </span> 
           <label className='switch'>
@@ -373,7 +381,9 @@ class BookList extends Component {
           </label>
           <span style={this.state.booksRead ? {color:"#2196F3"} : {color:""}}> Read</span>
         </div>
+        {/* renders book list when loaded from rails */}
         {(this.state.bookDataLoaded ? this.showBooks() : <p>Loading...</p>)}
+        {/* conditionally renders either Add Book button or New Book Form */}
         {!this.state.creatingBook ? (
           <div className='book-create-button' onClick={this.toggleCreateBook}>
           <p>Add A Book</p>
@@ -392,6 +402,7 @@ class BookList extends Component {
             bookImage={this.state.bookImage}
           />
         )}
+        {/* this is the modal window for user feedback when they mark a book as read */}
         <FeedbackModal 
           show={this.state.bookToRate} 
           onClose={() => this.setBookToRate(null)}

@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this is the new book creation form. hopefully, user can just use the google API search
 const NewBookForm = (props) => {
   return (
     <div className="bookcreateform">

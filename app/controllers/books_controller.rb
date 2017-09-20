@@ -5,16 +5,19 @@ class BooksController < ApiController
   before_action :require_login, except: [:search, :query]
   before_action :set_book, except: [:index, :create, :search]
 
+  # get all books for current user
   def index
     books = current_user.books.all
     render json: { books: books }
   end
 
+  # get individual book info
   def show
     book_user = @book.user
     render json: { book: @book, username: book_user.username }
   end
 
+  # create new book
   def create
     book = Book.new(book_params)
     book.user = current_user
@@ -30,6 +33,7 @@ class BooksController < ApiController
     end
   end
 
+  # update book info
   def update
     if @book.update(update_params)
       render json: {
@@ -41,12 +45,14 @@ class BooksController < ApiController
     end
   end
 
+  # delete book
   def destroy
     if @book.destroy!
       render json: { message: 'Book baleeted' }
     end
   end
 
+  # search Google Books API based on parameter query
   def search
     @google = Rails.application.secrets.google_api_key
     puts query["query"]

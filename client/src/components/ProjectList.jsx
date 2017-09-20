@@ -5,6 +5,7 @@ import Auth from '../modules/Auth';
 import ProjectSingle from './ProjectSingle';
 import NewProjectForm from './NewProjectForm';
 
+// displays list of projects, as well as lets user add new project
 class ProjectList extends Component {
   constructor() {
     super();
@@ -24,6 +25,7 @@ class ProjectList extends Component {
     this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
   }
 
+  // gets list of projects on load
   componentWillMount() {
     axios.get('/projects', {
       headers: {
@@ -40,6 +42,7 @@ class ProjectList extends Component {
     })
   }
 
+  // toggles create new project form
   toggleCreateProject() {
     this.setState((prevState) => {
       return {
@@ -51,6 +54,7 @@ class ProjectList extends Component {
     })
   }
 
+  // generic form input change method
   handleInputChange(event) {
     const name = event.target.name;
     const value = event.target.value;
@@ -91,6 +95,7 @@ class ProjectList extends Component {
     });
   }
 
+  // displays list of projects
   renderProjects() {
     return this.state.projectData.map((project) => {
       return <ProjectSingle type="list" project={project} key={project.id} />

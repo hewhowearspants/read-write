@@ -1,5 +1,6 @@
 import React from 'react';
 
+// nav bar for selecting project components
 const ProjectNav = (props) => {
   return (
     <div className='project-nav'>

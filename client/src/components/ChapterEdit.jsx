@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 
+// chapter edit contains the Quill text editor for writing project chapters. this is the meaty part.
 class ChapterEdit extends Component {
   render() {
     return (

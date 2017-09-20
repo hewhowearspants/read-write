@@ -7,6 +7,7 @@ import Chapter from './Chapter';
 import ChapterEdit from './ChapterEdit';
 import NewChapterForm from './NewChapterForm';
 
+// component displays list of chapters, also renders individual chapters and the chapter edit form
 class ChapterList extends Component {
   constructor() {
     super();
@@ -23,6 +24,7 @@ class ChapterList extends Component {
       chapterContent: '',
     }
     
+    // method bindings
     this.setChapterToShow = this.setChapterToShow.bind(this);
     this.setChapterToEdit = this.setChapterToEdit.bind(this);
     this.toggleCreateChapter = this.toggleCreateChapter.bind(this);
@@ -33,6 +35,7 @@ class ChapterList extends Component {
     this.deleteChapter = this.deleteChapter.bind(this);
   }
 
+  // get chapter list on load
   componentDidMount() {
     axios.get(`/projects/${this.props.projectData.id}/chapters`, {
       headers: {
@@ -50,6 +53,7 @@ class ChapterList extends Component {
     });
   }
 
+  // toggles the rendering of the new chapter form
   toggleCreateChapter() {
     this.setState((prevState) => {
       return {
@@ -61,6 +65,7 @@ class ChapterList extends Component {
     })
   }
 
+  // sets which chapter to display info for
   setChapterToShow(id) {
     const chapterData = this.state.chapterData.filter((chapter) => {
       return chapter.id === id;
@@ -71,6 +76,7 @@ class ChapterList extends Component {
     })
   }
 
+  // sets which chapter to display for editing (including null)
   setChapterToEdit(id) {
     const chapterData = this.state.chapterData.filter((chapter) => {
       return chapter.id === id;
@@ -92,6 +98,7 @@ class ChapterList extends Component {
     }
   }
 
+  // generic input change method
   handleInputChange(event) {
     console.log(event.target);
     const name = event.target.name;
@@ -101,12 +108,14 @@ class ChapterList extends Component {
     });
   }
 
+  // input change method specifically for Quill text editor in ChapterEdit
   handleContentChange(value) {
     this.setState({
       chapterContent: value,
     })
   }
 
+  // posts new chapters to rails
   handleChapterSubmit(event) {
     event.preventDefault();
     axios(`/projects/${this.props.projectData.id}/chapters`, {
@@ -123,6 +132,7 @@ class ChapterList extends Component {
       }
     }).then((res) => {
       console.log(res);
+      // adds new chapter to state
       this.setState((prevState) => {
         return {
           chapterData: prevState.chapterData.concat(res.data.chapter),
@@ -136,6 +146,7 @@ class ChapterList extends Component {
     })
   }
 
+  // edits chapter content in rails, DOES NOT RESET STATE, acts as a Save button so user can keep writing
   handleChapterEditSubmit() {
     axios(`/projects/${this.props.projectData.id}/chapters/${this.state.chapterToEdit.id}`, {
       method: 'PATCH',
@@ -152,12 +163,14 @@ class ChapterList extends Component {
       }
     }).then((res) => {
       console.log(res);
+      // updates chapter data in state 
       const newChapterData = [...this.state.chapterData];
       newChapterData.forEach((chapter, index, array) => {
         if (chapter.id === res.data.chapter.id) {
           array[index] = res.data.chapter;
         }
       });
+
       this.setState({
         chapterData: newChapterData,
         chapterToShow: res.data.chapter,
@@ -167,6 +180,7 @@ class ChapterList extends Component {
     })
   }
   
+  // does what it says
   deleteChapter(id) {
     axios(`/projects/${this.props.projectData.id}/chapters/${id}`, {
       method: 'DELETE',
@@ -176,12 +190,14 @@ class ChapterList extends Component {
       }
     }).then((res) => {
       console.log(res);
+      // remove deleted chapter from state
       const newChapterData = [...this.state.chapterData];
       newChapterData.forEach((chapter, index, array) => {
         if (chapter.id === id) {
           array.splice(index, 1);
         }
       });
+
       this.setState({
         chapterData: newChapterData,
         chapterToShow: null,
@@ -192,6 +208,7 @@ class ChapterList extends Component {
     })
   }
 
+  // renders list of chapters
   renderChapters() {
     return this.state.chapterData.map((chapter) => {
       return (
@@ -205,9 +222,11 @@ class ChapterList extends Component {
 
   render() {
     return (
+      // conditionally renders either the chapter list or the individual chapter show/edit
       !this.state.chapterToShow ? (
         <div className="chapter-list">
           {this.state.chapterDataLoaded ? this.renderChapters() : <p>Loading...</p>}
+          {/* conditionally renders either add chapter button or new chapter form  */}
           {!this.state.creatingChapter ? (
             <div className='chapter-create-button' onClick={this.toggleCreateChapter}>
               <p>Add Chapter</p>
@@ -218,6 +237,7 @@ class ChapterList extends Component {
           )}
         </div>
       ) : (
+        // if not showing the chapter list, conditonally renders either the chapter show or chapter edit
         !this.state.chapterToEdit ? (
           <Chapter 
             projectData={this.props.projectData} 

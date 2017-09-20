@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Auth from '../modules/Auth';
 
+// basic dashboard, displays users project and book counts
 class Dash extends Component {
   constructor() {
     super();

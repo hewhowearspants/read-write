@@ -3,16 +3,19 @@ class CharactersController < ProjectsController
   before_action :set_project
   before_action :set_character, except: [:index, :create]
 
+  # get list of characters for current project
   def index
     characters = @project.characters.all
     render json: { characters: characters }
   end
 
+  # get individual character info
   def show
     character_project = @character.project
     render json: { character: @character, project_title: character_project.title}
   end
 
+  # create new character
   def create
     character = Character.new(character_params)
     character.project = @project
@@ -27,6 +30,7 @@ class CharactersController < ProjectsController
     end
   end
 
+  # update character info
   def update
     if @character.update(update_params)
       render json: {
@@ -38,6 +42,7 @@ class CharactersController < ProjectsController
     end
   end
 
+  # delete character
   def destroy
     if @character.destroy!
       render json: {message: 'character deleted'}
