@@ -6,6 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
+import '../node_modules/react-quill/dist/quill.snow.css';
 import './App.css';
 
 import Auth from './modules/Auth';
