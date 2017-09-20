@@ -2,21 +2,6 @@ import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 
 class ChapterEdit extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      text: '',
-    }
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  handleInputChange(value) {
-    this.setState({
-      text: value,
-    })
-  }
-
   render() {
     return (
       <div className='chapter-edit'>
