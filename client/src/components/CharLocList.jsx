@@ -63,6 +63,7 @@ class CharLocList extends Component {
   setDataToShow(id) {
     this.setState({
       dataToShow: id,
+      dataToEdit: null,
     })
   }
 
