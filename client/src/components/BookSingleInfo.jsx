@@ -13,22 +13,6 @@ const BookSingleInfo = (props) => {
 
   return (
     <div className="book-single-info">
-      {/* either render book description or a text form field for editing */}
-      {props.bookToEdit !== props.book.id ? (
-        <div className="book-description">
-          <p>{props.book.description}</p>
-        </div>
-      ) : (
-        <div className="book-description">
-          <input
-            type="text"
-            name="bookDescription"
-            value={props.bookDescription}
-            placeholder="description"
-            onChange={props.handleInputChange}
-          />
-        </div>
-      )}
       {/* either display book information or form fields for editing */}
       {props.bookToEdit === props.book.id ? (
         <div className="book-middle">
@@ -60,10 +44,32 @@ const BookSingleInfo = (props) => {
           <p>{props.book.genre}</p>
         </div>
       )}
-      <div className="book-bottom">
-        <div className='user-rating'>
-          {renderRating()}
+      {/* either render book description or a text form field for editing */}
+      {props.bookToEdit !== props.book.id ? (
+        <div className="book-description">
+          <p>{props.book.description}</p>
         </div>
+      ) : (
+        <div className="book-description">
+          <textarea
+            rows='10'
+            type="text"
+            name="bookDescription"
+            value={props.bookDescription}
+            placeholder="description"
+            onChange={props.handleInputChange}
+          />
+        </div>
+      )}
+      <div className="book-bottom">
+        {props.book.user_rating ? (
+          <div className='user-rating'>
+            <p>You thought: </p>
+            <span>"{renderRating()} {props.book.user_comment}"</span>
+          </div>
+        ) : ( 
+          ''
+        )}
         {/* display either edit/delete buttons, or submit and cancel if editing */}
         {props.bookToEdit !== props.book.id ? (
           <div className="links">
