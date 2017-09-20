@@ -100,7 +100,6 @@ class ChapterList extends Component {
 
   // generic input change method
   handleInputChange(event) {
-    console.log(event.target);
     const name = event.target.name;
     const value = event.target.value;
     this.setState({

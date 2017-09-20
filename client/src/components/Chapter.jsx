@@ -5,7 +5,7 @@ class Chapter extends Component {
   render() {
     return (
       <div className='chapter'>
-        <p className='chapter-header'><span onClick={() => this.props.setChapterToShow(null)}>Chapters</span> > Chapter {this.props.chapter.chapter_number}: {this.props.chapter.title}</p> 
+        <p className='chapter-header'><span className='chapters-link' onClick={() => this.props.setChapterToShow(null)}>Chapters</span> > Chapter {this.props.chapter.chapter_number}: {this.props.chapter.title}</p> 
         {/* because ReactQuill outputs html content, need to (dangerously) render HTML, 
         otherwise it will display a bunch of HTML tags with the text */}
         <div className='chapter-content' dangerouslySetInnerHTML={{ __html: this.props.chapter.content}} /> 
