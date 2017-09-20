@@ -1,6 +1,7 @@
 .app {
   overflow: hidden;
   font-family: 'Averia Serif Libre', cursive;
+  background-color: #C5E0DC;
 }
 
 p {
@@ -31,7 +32,8 @@ header {
   top: 0;
   width: 100vw;
   padding: 7px 15px 6px;
-  background-color: white;
+  background-color: #774F38;
+  color: white;
   box-sizing: border-box;
 }
 
@@ -93,7 +95,7 @@ nav {
   height: calc(100vh - 53px - 39px);
   border-left: 1px solid black;
   transition: .25s all;
-  background-color: white;
+  background-color: #F1D4AF;
   z-index: 1;
 }
 
@@ -182,6 +184,7 @@ main {
   padding: 5px;
   box-sizing: border-box;
   cursor: pointer;
+  background-color: #E08E79;
 }
 
 .book-single,
@@ -194,6 +197,7 @@ main {
   border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
+  background-color: #ECE5CE;
 }
 
 .book-single,
@@ -255,6 +259,7 @@ main {
 
 .book-single-info {
   width: 94%;
+  background-color: #F1D4AF;
   border: 1px solid grey;
   border-radius: 0px 0px 5px 5px;
   border-top: 0;
@@ -272,6 +277,7 @@ main {
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
+  background-color: #E08E79;
 }
 
 .chaptercreateform {
@@ -335,6 +341,9 @@ main {
   margin-top: -6px;
   margin-right: -6px;
   border-radius: 0px 5px 0px 5px;
+  background-color: tan;
+  border-top: 1px solid saddlebrown;
+  border-right: 1px solid saddlebrown;
 }
 
 .book-single .mark-read-toggle-button {
@@ -351,8 +360,9 @@ main {
 
 .book-single .book-info-toggle-button {
   border-radius: 0px 0px 5px 0px;
-  border-bottom: 1px solid darkslategray;
-  border-right: 1px solid darkslategray;
+  background-color: tan;
+  border-bottom: 1px solid saddlebrown;
+  border-right: 1px solid saddlebrown;
 }
 
 .bookcreateform .submit-button,
@@ -374,7 +384,8 @@ main {
 .char-loc-single .cancel-button,
 .feedback-modal .cancel-button,
 .links .cancel-button {
-  background-color: lightcoral;
+  background-color: orangered;
+  color: white;
   border-bottom: 1px solid darkred;
   border-right: 1px solid darkred;
   border-radius: 0px 0px 5px 0px;
@@ -392,7 +403,7 @@ main {
 .links .edit-button,
 .char-loc-single .edit-button,
 .chapter .edit-button {
-  background-color: lightblue;
+  background-color: lightskyblue;
   border-bottom: 1px solid darkblue;
   border-radius: 5px 0px 0px 0px;
 }
@@ -400,9 +411,10 @@ main {
 .links .delete-button,
 .char-loc-single .delete-button,
 .chapter .delete-button {
-  background-color: lightcoral;
-  border-bottom: 1px solid crimson;
-  border-right: 1px solid crimson;
+  background-color: crimson;
+  color: white;
+  border-bottom: 1px solid darkred;
+  border-right: 1px solid darkred;
   border-radius: 0px 0px 5px 0px;
 }
 
@@ -455,6 +467,7 @@ main {
 .project-nav {
   display: flex;
   justify-content: center;
+  background-color: #F1D4AF;
 }
 
 .project-nav ul {
@@ -502,7 +515,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background-color: grey;
+  background-color: #774F38;
   border-top: 1px solid grey;
   box-sizing: border-box;
 }
@@ -552,7 +565,7 @@ footer .book-search-form input[type='text'] {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #774F38;
   transition: .25s;
 }
 
@@ -587,8 +600,8 @@ input:checked + .slider:before {
 }
 
 .selected {
-  background-color: black;
-  color: white;
+  background-color: #774F38;
+  color: #ECE5CE;
 }
 
 @keyframes slide-down {
