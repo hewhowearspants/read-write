@@ -24,7 +24,9 @@ const BookSingleInfo = (props) => {
             onChange={props.handleInputChange}
           />
           <input
-            type="number"
+            className='book-year-input'
+            maxLength='4'
+            type="text"
             name="bookYear"
             value={props.bookYear}
             placeholder="year"
