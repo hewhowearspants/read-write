@@ -400,6 +400,25 @@ main {
   margin: 0 2px;
 }
 
+.book-single .add-button {
+  font-size: 20px;
+  width: 50px;
+  border-radius: 5px 0px 0px 0px;
+  background-color: gold;
+  border-bottom: 1px solid goldenrod;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-single .add-button i {
+  margin: 0px 1px;
+}
+
+.book-single .add-button i:first-child {
+  font-size: 15px;
+}
+
 .book-single .book-info-toggle-button {
   border-radius: 0px 0px 5px 0px;
   background-color: tan;
