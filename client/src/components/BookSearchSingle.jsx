@@ -9,14 +9,20 @@ const BookSearchSingle = (props) => {
         <p>{props.book.author}</p>
       </div>
       <div className="book-single-bottom">
-        <div className="book-add-to-list">
-          {props.auth ? <button onClick={() => props.addBookToList(props.book.search_id)}>Add</button> : <p>Log in to add</p>}
-        </div>
-        <div className="book-show-info">
-          {props.bookToShow === props.book.search_id ? (
-            <button onClick={() => props.setBookToShow(null)}>-</button>
+        <div className="buttons">
+          {props.auth ? (
+            <button className='add-button' onClick={() => props.addBookToList(props.book.search_id)} title='Add to List'>
+              <i className="fa fa-plus-circle" aria-hidden="true"></i><i className="fa fa-book" aria-hidden="true"></i>
+            </button>
           ) : (
-            <button onClick={() => props.setBookToShow(props.book.search_id)}>+</button>
+            <button className='add-button' title='Log in to add to your List'>
+              <i className="fa fa-plus-circle" aria-hidden="true"></i> <i className="fa fa-book" aria-hidden="true"></i>
+            </button>
+          )}
+          {props.bookToShow === props.book.search_id ? (
+            <button className='book-info-toggle-button' onClick={() => props.setBookToShow(null)}><i className="fa fa-minus" aria-hidden="true"></i></button>
+          ) : (
+            <button className='book-info-toggle-button' onClick={() => props.setBookToShow(props.book.search_id)}><i className="fa fa-plus" aria-hidden="true"></i></button>
           )}
         </div>
       </div>
