@@ -11,14 +11,14 @@ class NavPane extends Component {
         <ul>
           {!Auth.isUserAuthenticated() ? (
             <ul>
-              <li><Link to="/login">Login</Link></li>
+              <li onClick={this.props.toggleNavPane}><Link to="/login">Login</Link></li>
             </ul>
           ) : (
             <ul>
-              <li><Link to="/profile">Dash</Link></li>
-              <li><Link to="/books">Read</Link></li>
-              <li><Link to="/projects">Write</Link></li>
-              <li className="logout" onClick={this.props.logoutUser}>Logout</li>
+              <li onClick={this.props.toggleNavPane}><Link to="/profile">Dash</Link></li>
+              <li onClick={this.props.toggleNavPane}><Link to="/books">Read</Link></li>
+              <li onClick={this.props.toggleNavPane}><Link to="/projects">Write</Link></li>
+              <li className="logout" onClick={() => {this.props.logoutUser(); this.props.toggleNavPane()}}>Logout</li>
             </ul>
           )}
         </ul>
