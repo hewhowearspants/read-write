@@ -168,10 +168,11 @@ class Project extends Component {
               this.state.fieldToEdit !== 'synopsis' ? (
                 <p className='synopsis'>{this.state.projectData.synopsis}<span className='edit-field-button' onClick={() => this.setFieldToEdit('synopsis')}><i className="fa fa-pencil" aria-hidden="true"></i></span></p> 
               ) : (
-                <span>
-                  <input
+                <span className='synopsis-edit'>
+                  <textarea
                     type='text'
                     name='synopsis'
+                    rows='4'
                     value={this.state.synopsis}
                     placeholder='synopsis'
                     onChange={this.handleInputChange}
