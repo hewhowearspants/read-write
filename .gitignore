@@ -4,9 +4,12 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# vvvvv use below for development
+# vvvvv use below in Procfile for development
 # web: cd client && npm start
 # api: bundle exec rails s -p 3001
+#
+# vvvv use below in Procfile for deployment
+# web: bundle exec rails server
 
 # Ignore bundler config.
 /.bundle
