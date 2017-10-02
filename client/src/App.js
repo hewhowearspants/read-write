@@ -192,7 +192,7 @@ class App extends Component {
       <Router>
         <div className="app">
           <Header toggleNavPane={this.toggleNavPane} showNavPane={this.state.showNavPane} />
-          <NavPane showNavPane={this.state.showNavPane} logoutUser={this.logoutUser} />
+          <NavPane showNavPane={this.state.showNavPane} toggleNavPane={this.toggleNavPane} logoutUser={this.logoutUser} />
           <main>
           <Route
             exact path="/login"
