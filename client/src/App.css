@@ -444,10 +444,7 @@ main {
   border-radius: 5px 0px 0px 0px;
 }
 
-.project .submit-button {
-  color: forestgreen;
-  cursor: pointer;
-}
+
 
 .bookcreateform .cancel-button,
 .projectcreateform .cancel-button,
@@ -462,11 +459,6 @@ main {
   border-bottom: 1px solid darkred;
   border-right: 1px solid darkred;
   border-radius: 0px 0px 5px 0px;
-}
-
-.project .cancel-button {
-  color: darkred;
-  cursor: pointer;
 }
 
 .feedback-modal .submit-button {
@@ -624,8 +616,22 @@ main {
 
 .project .title-edit .buttons span,
 .project .subtitle-edit .buttons span,
-.project .synopsis-edit .buttons span, {
+.project .synopsis-edit .buttons span {
   margin: 0px 5px;
+}
+
+.project .title-edit .submit-button,
+.project .subtitle-edit .submit-button,
+.project .synopsis-edit .submit-button {
+  color: forestgreen;
+  cursor: pointer;
+}
+
+.project .title-edit .cancel-button,
+.project .subtitle-edit .cancel-button,
+.project .synopsis-edit .cancel-button {
+  color: darkred;
+  cursor: pointer;
 }
 
 .project .subtitle-edit {
