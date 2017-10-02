@@ -125,7 +125,7 @@ class Project extends Component {
                 </span>
               </span>
              ) : (
-               <span>
+               <span className='title-edit'>
                 <input
                   type='text'
                   name='title'
@@ -148,7 +148,7 @@ class Project extends Component {
                   </span>
                 </span>
               ) : (
-                <span>
+                <span className='subtitle-edit'>
                   <input
                     type='text'
                     name='subtitle'
