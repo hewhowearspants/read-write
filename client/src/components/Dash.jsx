@@ -42,7 +42,7 @@ class Dash extends Component {
   render() {
     return (
       <div className='dashboard'>
-        {this.state.name ? (<h2>Hi there, {this.state.name}</h2>) : (<h2>Loading...</h2>)}
+        {this.state.name ? (<h2>Hi there, {this.state.name.split(' ')[0]}</h2>) : (<h2>Loading...</h2>)}
         {this.state.userBooks ? (<p>You have {this.state.userBooks.length} books in your list</p>) : ''}
         {this.state.userProjects ? (<p>You have {this.state.userProjects.length} projects in the works</p>) : ''}
       </div>
