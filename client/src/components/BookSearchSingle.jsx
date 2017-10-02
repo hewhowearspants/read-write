@@ -15,7 +15,7 @@ const BookSearchSingle = (props) => {
               <i className="fa fa-plus-circle" aria-hidden="true"></i><i className="fa fa-book" aria-hidden="true"></i>
             </button>
           ) : (
-            <button className='add-button' title='Log in to add to your List'>
+            <button className='add-button disabled' title='Log in to add to your List' disabled>
               <i className="fa fa-plus-circle" aria-hidden="true"></i> <i className="fa fa-book" aria-hidden="true"></i>
             </button>
           )}
