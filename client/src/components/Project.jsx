@@ -133,8 +133,10 @@ class Project extends Component {
                   placeholder='title'
                   onChange={this.handleInputChange}
                 />
-                <span onClick={() => this.setFieldToEdit(null)}>No</span>
-                <span onClick={() => this.handleFormFieldSubmit()}>OK</span>
+                <span className='buttons'>
+                  <span className='submit-button' onClick={() => this.handleFormFieldSubmit()}><i className="fa fa-check" aria-hidden="true"></i></span>
+                  <span className='cancel-button' onClick={() => this.setFieldToEdit(null)}><i className="fa fa-ban" aria-hidden="true"></i></span>
+                </span>
                </span>
              )}
             </h3>
@@ -156,8 +158,10 @@ class Project extends Component {
                     placeholder='subtitle'
                     onChange={this.handleInputChange}
                   />
-                  <span onClick={() => this.setFieldToEdit(null)}>No</span>
-                  <span onClick={() => this.handleFormFieldSubmit()}>OK</span>
+                  <div className='buttons'>
+                    <span className='submit-button' onClick={() => this.handleFormFieldSubmit()}><i className="fa fa-check" aria-hidden="true"></i></span>
+                    <span className='cancel-button' onClick={() => this.setFieldToEdit(null)}><i className="fa fa-ban" aria-hidden="true"></i></span>
+                  </div>
                 </span>
              )}
             </h4>
@@ -177,8 +181,10 @@ class Project extends Component {
                     placeholder='synopsis'
                     onChange={this.handleInputChange}
                   />
-                  <span onClick={() => this.setFieldToEdit(null)}>No</span>
-                  <span onClick={() => this.handleFormFieldSubmit()}> OK</span>
+                  <div className='buttons'>
+                    <span className='submit-button' onClick={() => this.handleFormFieldSubmit()}> <i className="fa fa-check" aria-hidden="true"></i> </span>
+                    <span className='cancel-button' onClick={() => this.setFieldToEdit(null)}><i className="fa fa-ban" aria-hidden="true"></i></span>
+                  </div>
                 </span>
               )
             ) : (
