@@ -110,7 +110,7 @@ class ProjectList extends Component {
         {!this.state.creatingProject ? (
           <div className='project-create-button' onClick={this.toggleCreateProject}>
             <p>New Project</p>
-            <p>+</p>
+            <p><i className="fa fa-plus-circle" aria-hidden="true"></i></p>
           </div>
         ) : (
           <NewProjectForm

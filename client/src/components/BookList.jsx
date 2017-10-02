@@ -387,7 +387,7 @@ class BookList extends Component {
         {!this.state.creatingBook ? (
           <div className='book-create-button' onClick={this.toggleCreateBook}>
           <p>Add A Book</p>
-          <p>+</p>
+          <p><i className="fa fa-plus-circle" aria-hidden="true"></i></p>
         </div>
         ) : (
           <NewBookForm 

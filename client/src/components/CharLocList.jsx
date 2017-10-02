@@ -256,7 +256,7 @@ class CharLocList extends Component {
         {!this.state.creatingNew ? (
           <div className='char-loc-create-button' onClick={this.toggleCreateNew}>
             <p>Add {this.props.type}</p>
-            <p>+</p>
+            <p><i className="fa fa-plus-circle" aria-hidden="true"></i></p>
           </div>
         ) : (
           <NewCharLocForm

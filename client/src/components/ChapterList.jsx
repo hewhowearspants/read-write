@@ -229,7 +229,7 @@ class ChapterList extends Component {
           {!this.state.creatingChapter ? (
             <div className='chapter-create-button' onClick={this.toggleCreateChapter}>
               <p>Add Chapter</p>
-              <p>+</p>
+              <p><i className="fa fa-plus-circle" aria-hidden="true"></i></p>
             </div>
           ) : (
             <NewChapterForm toggleCreateChapter={this.toggleCreateChapter} handleInputChange={this.handleInputChange} handleChapterSubmit={this.handleChapterSubmit}/>
